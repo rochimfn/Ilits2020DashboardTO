@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="public\assets\ZabutoCalendar\zabuto_calendar.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="public\assets\ZabutoCalendar\zabuto_calendar.min.css">
+        <script src="\assets\ZabutoCalendar\zabuto_calendar.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="\assets\ZabutoCalendar\zabuto_calendar.min.css">
         <style>
             html, body {
                 background-color: #fff;
@@ -26,7 +27,15 @@
         </div>
         <script type="application/javascript">
             $(document).ready(function () {
-            $("#my-calendar").zabuto_calendar({language: "en"});
+            $("#my-calendar").zabuto_calendar({
+                language: "id",
+                today: true,
+                show_days: true,
+                weekstartson: 0,
+                nav_icon: {
+                    prev: '<i class="fa fa-chevron-circle-left"></i>',
+                    next: '<i class="fa fa-chevron-circle-right"></i>'
+                }});
         });
         </script>
     </body>
