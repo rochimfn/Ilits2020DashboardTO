@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
-
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+Route::get('/', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard')->middleware('auth');
+
+
+
