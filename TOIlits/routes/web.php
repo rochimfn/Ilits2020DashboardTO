@@ -13,9 +13,42 @@
 
 Auth::routes();
 
+Route :: get('/dashboard', function(){
+    return view('admin.umum.dashboard');
+});
+
+Route :: get('/notifikasi', function(){
+    return view('admin.peserta.notifikasiforda');
+});
+
+Route :: get('/upcoming_peserta', function(){
+    return view('admin.peseerta.upcoming');
+});
+
+Route :: get('/lupa_password', function(){
+    return view('admin.peserta.lupapassword');
+});
+
+Route :: get('/bukti_pembayaran', function(){
+    return view('admin.peserta.buktipembayaran');
+});
+
+Route :: get('/profil', function(){
+    return view('admin.peserta.profil');
+});
+
+Route :: get('/atur_kalender', function(){
+    return view ('admin.superuser.atur_kalender');
+});
+
 Route::get('/', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard')->middleware('auth');
+    return view('admin.umum.dashboard');
+})->name('admin.umum.dashboard')->middleware('auth');
 
+Auth::routes();
 
+Route::get('/logout', function(){
+    return view('auth.login');
+});
 
+//Route::get('/home', 'HomeController@index')->name('home');
