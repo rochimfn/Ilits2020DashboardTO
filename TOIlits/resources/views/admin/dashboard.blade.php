@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+<p>Welcome to this beautiful admin panel. {{ echo $GLOBALS['code']}}</p>
 @stop
 
 @section('css')

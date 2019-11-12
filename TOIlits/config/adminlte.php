@@ -1,9 +1,9 @@
 <?php
-static $code = 3;
+$GLOBALS['code'] = 1;
 //forda
-if($code == 1){
+if($GLOBALS['code'] == 1){
     return [
-
+        
         /*
         |--------------------------------------------------------------------------
         | Title
@@ -330,7 +330,7 @@ if($code == 1){
     ];
 }
 //admin
-else if($code == 2){
+else if($GLOBALS['code'] == 2){
     return [
 
         /*

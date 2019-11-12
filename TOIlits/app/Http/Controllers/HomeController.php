@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+include "config\adminlte.php";
 
 class HomeController extends Controller
 {
@@ -24,9 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         $status = DB::table('users')->pluck('status');
-        echo '<script language="javascript">';
-        echo 'alert('.status.')';
-        echo '</script>';
+        // echo '<script language="javascript">';
+        // echo 'alert('.status.')';
+        // echo '</script>';
+        if(Auth::user()->status == 1){
+            
+        }
         return view('admin.umum.dashboard');
     }
 }
