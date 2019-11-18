@@ -22,6 +22,7 @@ class CreatePesertasTable extends Migration
             $table->string('no_wa');
             $table->string('bukti_bayar');
             $table->tinyInteger('status');
+            $table->string('kartu_pelajar');
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('forda_id')->references('id')->on('forda');
             $table->timestamps();

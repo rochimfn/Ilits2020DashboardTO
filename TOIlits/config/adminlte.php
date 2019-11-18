@@ -1,5 +1,5 @@
 <?php
-$GLOBALS['code'] = 1;
+$GLOBALS['code']=config('sidebar_type');
 //forda
 if($GLOBALS['code'] == 1){
     return [
@@ -132,10 +132,7 @@ if($GLOBALS['code'] == 1){
     
         'menu' => [
             'NAVIGASI UTAMA',
-            [
-                'text' => 'Search',
-                'search' => true,
-            ],
+            
             [
                 'text'        => 'Kirim Pesan',
                 'url'         => 'admin/blog',
@@ -166,11 +163,6 @@ if($GLOBALS['code'] == 1){
             ],
             [
                 'text' => 'Reset Password Peserta',
-                'url'  => 'admin/settings',
-                'icon' => 'fas fa-fw fa-lock',
-            ],
-            [
-                'text' => 'Reset Password',
                 'url'  => 'admin/settings',
                 'icon' => 'fas fa-fw fa-lock',
             ],
@@ -440,7 +432,7 @@ else if($GLOBALS['code'] == 2){
         |
         */
     
-        'dashboard_url' => 'home',
+        'dashboard_url' => 'dashboard',
     
         'logout_url' => 'logout',
     
@@ -462,10 +454,6 @@ else if($GLOBALS['code'] == 2){
         'menu' => [
             'NAVIGASI UTAMA',
             [
-                'text' => 'Search',
-                'search' => true,
-            ],
-            [
                 'text'        => 'Statistik',
                 'url'         => 'admin/blog',
                 'icon'        => 'fas fa-fw fa-chart-bar',
@@ -486,11 +474,6 @@ else if($GLOBALS['code'] == 2){
                 'text' => 'Profil',
                 'url'  => 'admin/settings',
                 'icon' => 'fas fa-fw fa-user',
-            ],
-            [
-                'text' => 'Reset Password',
-                'url'  => 'admin/settings',
-                'icon' => 'fas fa-fw fa-lock',
             ],
             /*[
                 'text'    => 'multilevel',
@@ -758,7 +741,7 @@ else {
         |
         */
     
-        'dashboard_url' => 'home',
+        'dashboard_url' => 'dashboard',
     
         'logout_url' => 'logout',
     
@@ -780,10 +763,6 @@ else {
         'menu' => [
             'NAVIGASI UTAMA',
             [
-                'text' => 'Search',
-                'search' => true,
-            ],
-            [
                 'text'        => 'Notifikasi Forda',
                 'url'         => '/notifikasi',
                 'icon'        => 'far fa-fw fa-bell',
@@ -801,14 +780,9 @@ else {
                 'url'  => '/profil',
                 'icon' => 'fas fa-fw fa-user',
             ],
-            [
-                'text' => 'Lupa Password',
-                'url'  => '/lupa_password',
-                'icon' => 'fas fa-fw fa-lock',
-            ],
             'UPLOAD',
             [
-                'text' => 'Bukti Pembayaran',
+                'text' => 'Upload Berkas',
                 'url'  => '/bukti_pembayaran',
                 'icon' => 'fas fa-fw fa-file-upload',
             ],

@@ -47,6 +47,26 @@ class AuthController extends Controller
                         'login'=>true,
                         'role'=>'peserta'
                     ]);
+                    config(['sidebar_type' => '3']);
+                }
+                elseif($user->role=='forda'){
+                    $forda=Forda::where('user_id','=',$user->id)->first();
+                    $request->session()->put([
+                        'id'=>$forda->id,
+                        'nama'=>$forda->nama,
+                        'login'=>true,
+                        'role'=>'forda'
+                    ]);
+                    config(['sidebar_type' => '1']);
+                }
+                elseif($user->role=='admin'){
+                    $request->session()->put([
+                        'id'=>$user->id,
+                        'nama'=>'admin',
+                        'login'=>true,
+                        'role'=>'admin'
+                    ]);
+                    config(['sidebar_type' => '2']);
                 }
                 return redirect('/dashboard');
             }
