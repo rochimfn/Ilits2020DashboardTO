@@ -117,7 +117,7 @@ if($GLOBALS['code'] == 1){
     
         'login_url' => 'login',
     
-        'register_url' => 'register',
+        'register_url' => 'null',
     
         /*
         |--------------------------------------------------------------------------
@@ -771,7 +771,7 @@ else {
             ],
             [
                 'text'        => 'Upcoming Event',
-                'url'         => '/upcomingpeserta',
+                'url'         => '/upcoming_peserta',
                 'icon'        => 'far fa-fw fa-calendar-alt',
             ],
             'PENGATURAN AKUN',

@@ -88,7 +88,8 @@
                                 </div>
                             </form>
                             <!-- <img src="images/logotulisantrans.png" class="img img-fluid" /> -->
-                            <p>Belum punya akun? <a href="#">Daftar di sini</a></p>
+                            <p>Belum punya akun? <a href="/register">Daftar di sini</a></p>
+                            <p><a href="#">Lupa password?</a></p>
                         </div>
                     </div>
 

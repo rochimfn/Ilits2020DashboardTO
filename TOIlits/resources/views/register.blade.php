@@ -123,7 +123,7 @@
                             <!-- <img src="images/logotulisantrans.png" class="img img-fluid" /> -->
                             <div class="row">
                                 <div class="col-md-12">
-                            <p class="m-4">Sudah punya akun? <a href="#">Masuk di sini</a></p>
+                            <p class="m-4">Sudah punya akun? <a href="/">Masuk di sini</a></p>
                                 </div>
                             </div>
                         </div>

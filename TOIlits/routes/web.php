@@ -49,7 +49,7 @@ Route::get('/',function(){
 });
 Route::get('/register','AuthController@HalamanRegister');
 
-Route::get('/logout', function(){
+Route::post('/logout', function(){
     Session::flush();
     return redirect('/');
 });
