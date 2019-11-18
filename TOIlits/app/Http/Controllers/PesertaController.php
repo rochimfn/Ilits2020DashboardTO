@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Peserta;
+use App\Kalender;
 use Image;
 use File;
 class PesertaController extends Controller
 {
+    function HalamanEvent(Request $request){ 
+        $event = Kalender::get();
+        return view('admin/peserta/upcoming',[
+            'event'=>$event
+        ]);
+    }
     function HalamanBukti(Request $request){
         $peserta = Peserta::where('id',$request->session()->get('id'))->first();
         $sudahupload=false;
