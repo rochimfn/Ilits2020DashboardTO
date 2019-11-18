@@ -509,16 +509,16 @@
         },
         {
             "name": "jeroennoten/laravel-adminlte",
-            "version": "v3.0.1",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
-                "reference": "d56e4e501e29855cac07239f884c4da8edf62cff"
+                "reference": "899d0fdd99cc67fb7b8b274f7e740ccbfbfefa0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/d56e4e501e29855cac07239f884c4da8edf62cff",
-                "reference": "d56e4e501e29855cac07239f884c4da8edf62cff",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/899d0fdd99cc67fb7b8b274f7e740ccbfbfefa0b",
+                "reference": "899d0fdd99cc67fb7b8b274f7e740ccbfbfefa0b",
                 "shasum": ""
             },
             "require": {
@@ -559,7 +559,7 @@
                 "administrator",
                 "laravel"
             ],
-            "time": "2019-11-06T15:24:14+00:00"
+            "time": "2019-11-12T12:22:09+00:00"
         },
         {
             "name": "laravel/framework",

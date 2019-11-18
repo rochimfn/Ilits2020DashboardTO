@@ -22,7 +22,7 @@ Route :: get('/notifikasi', function(){
 });
 
 Route :: get('/upcoming_peserta', function(){
-    return view('admin.peseerta.upcoming');
+    return view('admin.peserta.upcoming');
 });
 
 Route :: get('/lupa_password', function(){
@@ -41,14 +41,24 @@ Route :: get('/atur_kalender', function(){
     return view ('admin.superuser.atur_kalender');
 });
 
-Route::get('/', function () {
-    return view('admin.umum.dashboard');
-})->name('admin.umum.dashboard')->middleware('auth');
+// Route::get('/', function () {
+//     return view('admin.umum.dashboard');
+// })->name('admin.umum.dashboard')->middleware('auth');
 
-Auth::routes();
+// Auth::routes();
+
+Route::get('/',function(){
+    return view('login');
+});
+Route::get('/register','AuthController@HalamanRegister');
 
 Route::get('/logout', function(){
     return view('auth.login');
 });
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+
+//POST
+Route::post('/proses_register','AuthController@ProsesRegister');
+Route::post('/proses_login','AuthController@ProsesLogin');
