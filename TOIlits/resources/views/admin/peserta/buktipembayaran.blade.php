@@ -4,7 +4,7 @@
 <link rel="icon" href="{!! asset('images/logokecil.png') !!}"/>
 
 @section('content_header')
-    <h1>Bukti Pembayaran</h1>
+    <h1>Upload Berkas</h1>
 @stop
 
 @section('content')

@@ -34,10 +34,10 @@ Route :: get('/profil', function(){
 })->middleware('CekLogin');
 
 Route :: get('/atur_kalender', function(){
-    
     return view ('admin.superuser.atur_kalender');
 })->middleware('CekLogin');
 
+Route::get('/konfirmasi_berkas','FordaController@HalamanBerkas')->middleware('CekLogin','CekStatusForda');
 // Route::get('/', function () {
 //     return view('admin.umum.dashboard');
 // })->name('admin.umum.dashboard')->middleware('auth');

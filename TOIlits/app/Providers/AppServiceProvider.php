@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $events)
     {
-        
+        //forda        
         if(\Config::get('sidebar.sidebar_type')==1){
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
             $event->menu->add('NAVIGASI UTAMA');
@@ -59,7 +59,8 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add('PEMBAYARAN');
             $event->menu->add([ 'text' => 'Konfirmasi Pembayaran',
-            'icon' => 'far fa-fw fa-check-circle',]);
+            'icon' => 'far fa-fw fa-check-circle',
+            'url'=>'/konfirmasi_berkas']);
         });
     }
     //admin
