@@ -45,6 +45,8 @@ Route :: get('/atur_kalender', function(){
 // Auth::routes();
 
 Route::get('/',function(){
+    if(Session::get('login'))
+    return redirect('/dashboard');
     return view('login');
 });
 Route::get('/register','AuthController@HalamanRegister');

@@ -7,6 +7,7 @@ use App\Forda;
 use App\User;
 use App\Peserta;
 use Illuminate\Support\Facades\Hash;
+use File;
 class AuthController extends Controller
 {
     function HalamanRegister(){
@@ -47,7 +48,7 @@ class AuthController extends Controller
                         'login'=>true,
                         'role'=>'peserta'
                     ]);
-                    config(['sidebar_type' => '3']);
+                    File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'3'] ?>");
                 }
                 elseif($user->role=='forda'){
                     $forda=Forda::where('user_id','=',$user->id)->first();
@@ -57,7 +58,7 @@ class AuthController extends Controller
                         'login'=>true,
                         'role'=>'forda'
                     ]);
-                    config(['sidebar_type' => '1']);
+                    File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'1'] ?>");
                 }
                 elseif($user->role=='admin'){
                     $request->session()->put([
@@ -66,11 +67,14 @@ class AuthController extends Controller
                         'login'=>true,
                         'role'=>'admin'
                     ]);
-                    config(['sidebar_type' => '2']);
+                    File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'2'] ?>");
                 }
                 return redirect('/dashboard');
             }
         }
-        echo "Username atau Password Salah";
+       return redirect('/')->with([
+           'pesan'=>'Username atau password salah',
+           'tipe'=>'danger'
+       ]);
     }
 }
