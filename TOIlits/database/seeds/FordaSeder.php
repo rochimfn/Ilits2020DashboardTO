@@ -71,7 +71,7 @@ class FordaSeder extends Seeder
         [72, 'PMKTR', 'Aceh', '@mlv6768j', '@pmktr', 'Muarif', '03111640000060', '085214101608', 'muarif100316', 'Raihan Akbar Ghifari', '085270203025', 'rayakbargf'],
         [73, 'Gerakan Generasi Samawa', 'Sumbawa', '-', 'Gerakan Generasi Samawa', 'Wahyu Prayuda', '03211740000057', '081916822882', 'yu_prayudaa', 'Marwah Rizki Rahmatia', '082340041739', 'marwahtiaa'],
         [74, 'IMBS', 'Bondowoso, Jawa Timur', '-', '@imbsby', 'Aldy Andana Haris', '04211640000064', '085335403860', 'aldyandanah', 'Anita Catur Wahyuni', '082245564717', 'anita_catur03'],
-        [75, 'Formabaya ITS', 'Blitar Raya', '@hwf5111a [pakai @]', '-', 'Robby Hartadi', '07211640000028', '085649399103', 'robbyhartadi', 'Alif Muftihan Rizaq', '082228244188', 'maharanisintan'],
+        [75, 'Formabaya ITS', 'Blitar Raya', '@hwf5111a', '-', 'Robby Hartadi', '07211640000028', '085649399103', 'robbyhartadi', 'Alif Muftihan Rizaq', '082228244188', 'maharanisintan'],
         [77, 'MBP', 'Sumatera Utara', '-', '-', 'Matatatias Situmorang', '071150000025', '082298294883', 'Matatatias Situmorang', 'Simon Peres Pakpahan', '082298294883', 'Fransistose'],
         [79, 'IKMP [Ikatan Keluarga Mahasiswa Patu]', 'Patu', '-', '-', 'Bagas Ananda', '07111740000002', '082213883596', 'letkolbananda', 'Dita Witdyaningtyas', '081225880732', 'ditawitdya'],
         [80, 'IMAMI SURABAYA', 'SUMATERA BARAT', '@ldm3999c', '@imami_sby', 'ADRIAN FIKTA NUGRAHA', '02411640000084', '082174670315', '@adrianfikta', 'Hidayattul Rafli', '08893026951', 'Hdyt.rfli'],
