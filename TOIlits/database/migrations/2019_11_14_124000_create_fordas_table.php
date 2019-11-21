@@ -16,10 +16,22 @@ class CreateFordasTable extends Migration
         Schema::create('forda', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
+            $table->string('daerah',30);
+            $table->string('id_line',30);
+            $table->string('uname_ig',30);
+            $table->string('nama_ketua');
+            $table->string('nrp',15);
+            $table->string('hp_ketua',30);
+            $table->string('id_line_ketua',30);
+            $table->string('nama_perwakilan');
+            $table->string('hp_perwakilan',30);
+            $table->string('id_line_perwakilan',30);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });
+
+        
     }
 
     /**
