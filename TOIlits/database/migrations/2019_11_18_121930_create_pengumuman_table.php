@@ -14,8 +14,8 @@ class CreatePengumumanTable extends Migration
     public function up()
     {
         Schema::create('pengumuman', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('forda_id');
+            $table->increments('id');
+            $table->unsignedInteger('forda_id');
             $table->string('pengumuman');
             $table->foreign('forda_id')->references('id')->on('forda');
             $table->timestamps();

@@ -14,7 +14,7 @@ class CreateFordasTable extends Migration
     public function up()
     {
         Schema::create('forda', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('nama');
             $table->string('daerah',30);
             $table->string('id_line',30);
@@ -26,7 +26,7 @@ class CreateFordasTable extends Migration
             $table->string('nama_perwakilan');
             $table->string('hp_perwakilan',30);
             $table->string('id_line_perwakilan',30);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedinteger('user_id');
             $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });

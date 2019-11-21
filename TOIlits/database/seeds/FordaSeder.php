@@ -84,9 +84,13 @@ class FordaSeder extends Seeder
         [88, 'CEPITS', 'Cepu', '-', '-', 'Devian Bayu Prakoso', '10311700000043', '087856405452', 'devianbayuprakoso_', 'Devian Bayu Prakoso', '08991932139', 'kukuh.setya'],
         [89, 'Argabayu', 'Nganjuk', '@khm0031b', 'argabayuofficial', 'dwi santoso', '02211740000034', '085331724191', 'dwisantoso7', 'Fitria', '085731244226', '085731244226']
     ];
-    
+    $x=1;
     foreach($forda as $data){
-        factory(User::class)->create();
+        User::create([
+            'role'=>'forda',
+            'username'=>'forda'.$x,
+            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+        ]);
         $user = User::orderBy('created_at','desc')->first();
         Forda::create([
             'nama'=>$data[1],
@@ -102,7 +106,7 @@ class FordaSeder extends Seeder
             'id_line_perwakilan'=>$data[11],
             'user_id'=>$user->id
         ]);
-        
+        $x++;
     }
     }
 }
