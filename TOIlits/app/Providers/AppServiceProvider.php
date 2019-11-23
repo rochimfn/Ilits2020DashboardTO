@@ -27,7 +27,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //forda        
         if(\Config::get('sidebar.sidebar_type')==1){
+        
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+            $totalEvent = \App\Kalender::count();
             $event->menu->add('NAVIGASI UTAMA');
             $event->menu->add([
                 'text' => 'Kirim Pesan',
@@ -43,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
                 'text'        => 'Upcoming Event',
                 'url'         => '/upcoming_peserta',
                 'icon'        => 'far fa-fw fa-calendar-alt',
-                'label'       => '1',
+                'label'       => $totalEvent,
                 'label_color' => 'success',
             ]);
             $event->menu->add('PENGATURAN AKUN');
@@ -99,6 +101,7 @@ class AppServiceProvider extends ServiceProvider
     //Peserta
     elseif(\Config::get('sidebar.sidebar_type')==3){
         $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+            $totalEvent = \App\Kalender::count();
             $event->menu->add('NAVIGASI UTAMA');
             $event->menu->add([
                 'text'        => 'Notifikasi Forda',
@@ -111,6 +114,8 @@ class AppServiceProvider extends ServiceProvider
                 'text'        => 'Upcoming Event',
                 'url'         => '/upcoming_peserta',
                 'icon'        => 'far fa-fw fa-calendar-alt',
+                'label'       => $totalEvent,
+                'label_color' => 'success',
             ]);
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([

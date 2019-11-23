@@ -20,9 +20,9 @@ class CreatePesertasTable extends Migration
             $table->string('asal_sekolah');
             $table->unsignedInteger('forda_id');
             $table->string('no_wa');
-            $table->string('bukti_bayar');
+            $table->string('bukti_bayar')->default(null)->nullable();
             $table->tinyInteger('status');
-            $table->string('kartu_pelajar');
+            $table->string('kartu_pelajar')->default(null)->nullable();
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('forda_id')->references('id')->on('forda');
             $table->timestamps();

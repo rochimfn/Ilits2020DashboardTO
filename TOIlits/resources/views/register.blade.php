@@ -83,7 +83,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
-                                        <input class="form-control" name="password" placeholder="Password" type="password" required>
+                                        <input class="form-control" name="password" placeholder="Password" type="password" required pattern=".{6,12}">
                                     </div>
                                 </div>
 

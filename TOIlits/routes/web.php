@@ -53,7 +53,11 @@ Route::post('/logout', function () {
     Session::flush();
     return redirect('/');
 });
-
+Route::get('/lupa_password','AuthController@HalamanLupaPassword');
+Route::get('/reset_password','AuthController@HalamanResetPassword');
+Route::get('/sendEmail',function(){
+    return view('tesemail');
+});
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -64,3 +68,6 @@ Route::post('/proses_upload_berkas', 'PesertaController@ProsesUploadBukti');
 Route::post('/tambah_event','AdminController@TambahEvent');
 Route::post('/edit_event','AdminController@EditEvent');
 Route::post('/hapus_event','AdminController@HapusEvent');
+Route::post('/proses_request_lupa_password','AuthController@ProsesRequestLupaPassword');
+Route::post('/proses_reset_password','AuthController@ProsesResetPassword');
+// Route::get('/sendEmail','MailController@KirimEmail');
