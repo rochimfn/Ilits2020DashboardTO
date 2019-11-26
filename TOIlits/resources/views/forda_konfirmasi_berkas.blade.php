@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Konfirmasi Berkas - ILITS 2020')
 <link rel="icon" href="{!! asset('images/logokecil.png') !!}"/>
 
 @section('content_header')

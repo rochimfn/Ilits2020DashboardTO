@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('NAVIGASI UTAMA');
             $event->menu->add([
                 'text' => 'Kirim Pesan',
-                'url' => 'admin/blog',
+                'url' => '/kelola_notifikasi',
                 'icon' => 'fas fa-fw fa-envelope-open-text',
             ]);
             $event->menu->add([
@@ -107,8 +107,6 @@ class AppServiceProvider extends ServiceProvider
                 'text'        => 'Notifikasi Forda',
                 'url'         => '/notifikasi',
                 'icon'        => 'far fa-fw fa-bell',
-                'label'       => '1',
-                'label_color' => 'success',
             ]);
             $event->menu->add( [
                 'text'        => 'Upcoming Event',

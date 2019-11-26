@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Peserta;
+use App\Pengumuman;
 class FordaController extends Controller
 {
     function HalamanBerkas(Request $request){
@@ -12,6 +13,35 @@ class FordaController extends Controller
         return view('forda_konfirmasi_berkas',[
             'peserta'=>$peserta
         ]);
+    }
+    function HalamanNotif(Request $request){
+        $notif = Pengumuman::where('forda_id',$request->session()->get('id'))->get();
+        return view('/notifikasi_forda',[
+            'notif'=>$notif
+        ]);
+    }
+
+    function ProsesTambahNotif(Request $request){
+        Pengumuman::create([
+            'pengumuman'=>$request->input('notif'),
+            'forda_id'=>$request->session()->get('id')
+        ]);
+
+        return redirect('/kelola_notifikasi');
+    }
+
+    function ProsesEditNotif(Request $request){
+        $pengumuman = Pengumuman::where('id',$request->input('id'));
+        $pengumuman->update([
+            'pengumuman'=>$request->input('editnotif')
+        ]);
+        return redirect('/kelola_notifikasi');
+    }
+
+    function ProsesHapusNotif(Request $request){
+        Pengumuman::where('id',$request->input('id'))->delete();
+        
+        return redirect('/kelola_notifikasi');
     }
 
     function ProsesTerimaBerkas(Request $request){

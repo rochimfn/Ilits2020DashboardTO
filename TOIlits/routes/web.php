@@ -58,6 +58,7 @@ Route::get('/reset_password','AuthController@HalamanResetPassword');
 Route::get('/sendEmail',function(){
     return view('tesemail');
 });
+Route::get('/kelola_notifikasi','FordaController@HalamanNotif')->middleware('CekLogin', 'CekStatusForda');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -72,4 +73,8 @@ Route::post('/proses_request_lupa_password','AuthController@ProsesRequestLupaPas
 Route::post('/proses_reset_password','AuthController@ProsesResetPassword');
 Route::post('/terima_berkas','FordaController@ProsesTerimaBerkas');
 Route::post('/tolak_berkas','FordaController@ProsesTolakBerkas');
+Route::post('/tambah_notif','FordaController@ProsesTambahNotif');
+Route::post('/edit_notif','FordaController@ProsesEditNotif');
+Route::post('/hapus_notif','FordaController@ProsesHapusNotif');
 // Route::get('/sendEmail','MailController@KirimEmail');
+

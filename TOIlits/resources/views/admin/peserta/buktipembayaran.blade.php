@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Upload Berkas - ILITS 2020')
 <link rel="icon" href="{!! asset('images/logokecil.png') !!}"/>
 
 @section('content_header')
@@ -15,9 +15,15 @@
 </div>
 @endif
 @if($sudahupload)
+@if($peserta->status=='0')
 <div class="alert alert-warning">
         Berkas anda masih direview oleh forda,mohon menunggu
     </div>
+    @elseif($peserta->status=='1')
+    <div class="alert alert-success">
+            Berkas anda sudah diterima oleh forda
+        </div>
+    @endif
     <div class="row">
             <div class="form-group col-md-4 col-sm-6">
                 <label>Kartu Pelajar</label><br>
