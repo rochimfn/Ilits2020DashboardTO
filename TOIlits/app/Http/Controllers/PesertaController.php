@@ -24,7 +24,8 @@ class PesertaController extends Controller
         }
         return view('admin/peserta/buktipembayaran',[
             'peserta'=>$peserta,
-            'sudahupload'=>$sudahupload
+            'sudahupload'=>$sudahupload,
+            
         ]);
     }
     function ProsesUploadBukti(Request $request){

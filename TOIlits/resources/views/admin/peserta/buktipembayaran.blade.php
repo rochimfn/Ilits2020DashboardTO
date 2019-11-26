@@ -33,6 +33,11 @@
         </div>
     
 @else
+@if($peserta->status=='2')
+<div class="alert alert-danger">
+    Berkas anda ditolak oleh forda anda. Silahkan upload ulang berkas yang dibutuhkan
+    </div>
+@endif
     <p>Silahkan masukkan berkas anda di form berikut (masing-masing gambar tidak boleh melebihi 200KB)</p>
 
     <form action="/proses_upload_berkas" method="POST" enctype="multipart/form-data"> 

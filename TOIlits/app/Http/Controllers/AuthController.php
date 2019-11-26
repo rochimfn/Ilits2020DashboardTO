@@ -10,7 +10,7 @@ use App\KodeRequest;
 use Illuminate\Support\Facades\Hash;
 use File;
 use Mail;
-
+use \Exception;
 class AuthController extends Controller
 {
     function HalamanRegister(Request $request)
@@ -92,6 +92,7 @@ class AuthController extends Controller
 
     function ProsesRegister(Request $request)
     {
+        try{
         User::create([
             'role' => 'peserta',
             'username' => $request->input('email'),
@@ -110,7 +111,13 @@ class AuthController extends Controller
             'status' => '0'
         ]);
 
-        return redirect('/');
+        return redirect('/');}
+        catch (\Illuminate\Database\QueryException $e){
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == 1062){
+                return redirect('/')->with(['pesan'=>'Email sudah digunakan','tipe'=>'danger']);
+            }
+        }
     }
 
     function ProsesLogin(Request $request)

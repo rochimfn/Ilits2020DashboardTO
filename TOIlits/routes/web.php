@@ -70,4 +70,6 @@ Route::post('/edit_event','AdminController@EditEvent');
 Route::post('/hapus_event','AdminController@HapusEvent');
 Route::post('/proses_request_lupa_password','AuthController@ProsesRequestLupaPassword');
 Route::post('/proses_reset_password','AuthController@ProsesResetPassword');
+Route::post('/terima_berkas','FordaController@ProsesTerimaBerkas');
+Route::post('/tolak_berkas','FordaController@ProsesTolakBerkas');
 // Route::get('/sendEmail','MailController@KirimEmail');
