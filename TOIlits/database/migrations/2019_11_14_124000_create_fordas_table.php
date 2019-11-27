@@ -27,7 +27,7 @@ class CreateFordasTable extends Migration
             $table->string('hp_perwakilan',30);
             $table->string('id_line_perwakilan',30);
             $table->unsignedinteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 

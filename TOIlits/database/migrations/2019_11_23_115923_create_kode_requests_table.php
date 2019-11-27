@@ -17,7 +17,7 @@ class CreateKodeRequestsTable extends Migration
             $table->increments('id');
             $table->string('kode',6);
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

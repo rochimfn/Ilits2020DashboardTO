@@ -135,7 +135,7 @@ class AuthController extends Controller
                     ]);
                     File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'3'] ?>");
                 } elseif ($user->role == 'forda') {
-                    $forda = Forda::where('user_id', '=', $user->id)->first();
+                    $forda = Forda::where('user_id',  $user->id)->first();
                     $request->session()->put([
                         'id' => $forda->id,
                         'nama' => $forda->nama,

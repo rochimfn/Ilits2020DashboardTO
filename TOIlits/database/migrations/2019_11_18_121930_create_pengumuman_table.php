@@ -17,7 +17,7 @@ class CreatePengumumanTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('forda_id');
             $table->string('pengumuman');
-            $table->foreign('forda_id')->references('id')->on('forda');
+            $table->foreign('forda_id')->references('id')->on('forda')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -10,6 +10,7 @@
 @section('content')
     @foreach($notif as $n)
         <div class="alert alert-success" role="alert">
+            <strong>{{ \Carbon\Carbon::parse($n->updated_at)->format('d-m-Y') }}</strong><br>
             {{ $n->pengumuman}}
         </div>
     @endforeach

@@ -91,7 +91,7 @@ class FordaSeder extends Seeder
             'username'=>'forda'.$x,
             'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
         ]);
-        $user = User::orderBy('created_at','desc')->first();
+        $user = User::orderBy('id','desc')->first();
         Forda::create([
             'nama'=>$data[1],
             'daerah'=>$data[2],
