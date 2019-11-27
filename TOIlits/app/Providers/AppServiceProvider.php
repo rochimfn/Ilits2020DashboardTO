@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add([
                 'text'        => 'Cetak Absen',
-                'url'         => 'admin/blog',
+                'url'         => '/cetak_absen',
                 'icon'        => 'fas fa-fw fa-print',
             ]);
             $event->menu->add([

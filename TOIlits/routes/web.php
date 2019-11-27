@@ -61,6 +61,7 @@ Route::get('/sendEmail',function(){
 });
 Route::get('/notifikasi','PesertaController@HalamanNotif')->middleware('CekLogin');
 Route::get('/kelola_notifikasi','FordaController@HalamanNotif')->middleware('CekLogin', 'CekStatusForda');
+Route::get('/cetak_absen','FordaController@CetakAbsen')->middleware('CekLogin', 'CekStatusForda');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 

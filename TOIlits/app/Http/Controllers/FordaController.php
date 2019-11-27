@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Peserta;
 use App\Pengumuman;
+use PDF;
 class FordaController extends Controller
 {
     function HalamanBerkas(Request $request){
@@ -19,6 +20,18 @@ class FordaController extends Controller
         return view('/notifikasi_forda',[
             'notif'=>$notif
         ]);
+    }
+    function CetakAbsen(Request $request){
+        $peserta = Peserta::where('forda_id',$request->session()->get('id'))->get();
+        $data = [
+            'peserta'=>$peserta,
+            'forda'=>$request->session()->get('nama')
+        ];
+        // return view('/cetakabsen',[
+        //     'peserta'=>$peserta
+        // ]);
+        $pdf = PDF::loadView('cetakabsen', $data)->setPaper('a4', 'portrait');;
+        return $pdf->download('absen.pdf');
     }
 
     function ProsesTambahNotif(Request $request){
