@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Peserta;
 use App\Kalender;
+use App\Pengumuman;
 use Image;
 use File;
 class PesertaController extends Controller
@@ -16,6 +17,16 @@ class PesertaController extends Controller
             'event'=>$event
         ]);
     }
+
+    function HalamanNotif(Request $request){
+        $peserta = Peserta::where('id',$request->session()->get('id'))->first();
+        $notif = Pengumuman::where('forda_id',$peserta->forda_id)->orderBy('created_at','desc')->get();
+        return view('/admin/peserta/notifikasiforda',[
+            'notif'=>$notif
+        ]);
+
+    }
+
     function HalamanBukti(Request $request){
         $peserta = Peserta::where('id',$request->session()->get('id'))->first();
         $sudahupload=false;
@@ -25,7 +36,6 @@ class PesertaController extends Controller
         return view('admin/peserta/buktipembayaran',[
             'peserta'=>$peserta,
             'sudahupload'=>$sudahupload,
-            
         ]);
     }
     function ProsesUploadBukti(Request $request){

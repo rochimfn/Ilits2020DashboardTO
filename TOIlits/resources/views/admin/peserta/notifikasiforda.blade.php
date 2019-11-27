@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Notifikasi Forda - ILITS 2020')
 <link rel="icon" href="{!! asset('images/logokecil.png') !!}"/>
 
 @section('content_header')
@@ -8,7 +8,11 @@
 @stop
 
 @section('content')
-    <p>Coba tes.</p>
+    @foreach($notif as $n)
+        <div class="alert alert-success" role="alert">
+            {{ $n->pengumuman}}
+        </div>
+    @endforeach
 @stop
 
 @section('css')

@@ -55,9 +55,11 @@ Route::post('/logout', function () {
 });
 Route::get('/lupa_password','AuthController@HalamanLupaPassword');
 Route::get('/reset_password','AuthController@HalamanResetPassword');
+
 Route::get('/sendEmail',function(){
     return view('tesemail');
 });
+Route::get('/notifikasi','PesertaController@HalamanNotif')->middleware('CekLogin');
 Route::get('/kelola_notifikasi','FordaController@HalamanNotif')->middleware('CekLogin', 'CekStatusForda');
 //Route::get('/home', 'HomeController@index')->name('home');
 

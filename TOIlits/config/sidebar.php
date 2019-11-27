@@ -1,2 +1,2 @@
 <?php
- return['sidebar_type'=>'1'] ?>
+ return['sidebar_type'=>'3'] ?>
