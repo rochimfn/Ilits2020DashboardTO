@@ -60,7 +60,7 @@
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-secondary shadow border-0">
                         <div class="card-body px-lg-5 py-lg-5">
-                            <form action="/proses_register" method="POST">
+                            <form action="/proses_register" method="POST" id="form">
                                     {{csrf_field()}}
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-alternative">
@@ -148,7 +148,21 @@
     <!--   Core   -->
     <script src="auth/js/plugins/jquery/dist/jquery.min.js"></script>
     <script src="auth/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
+    <script>
+            $(document).ready(function () {
+                $('#form').validate({ // initialize the plugin
+                    rules: {
+                        no_wa: {
+                            required: true,
+                            digits: true                        
+                        }
+                    }
+                });
+            });
+    </script>
 </body>
 
 </html>
