@@ -25,7 +25,7 @@ class FordaSeder extends Seeder
         [14, 'FORMED', 'Medan', '-', '-', 'Edric livanrio', '02511840000049', '081260973279', 'edricklivanrio', 'Ricardo Fransiskus Karo-Karo', '082276126156', 'ricardofransiskuskk'],
         [15, 'PERHIMAK ITS', 'Kebumen', '-', 'perhimak.its', 'Falentin Tri Yulianto', '02311740000092', '085225462751', 'f2_fffzf', 'Jeryco Rahardian', '0895604017715', 'Jrahardn'],
         [16, 'BABALITS', 'Baikpapan', '-', '-', 'ahmad ramadhan', '02211840000065', '081350166862', 'ahmadr10', 'Miftahul Hadi', '085349314377', 'hadi2155'],
-        [17, '70 Bulungan-Surabaya', 'Jakarta Selatan', '-', '-', 'Muhammad Bondan Vitto Ramadhan', '06211840000086', '085954709811', 'bondanvitto2', 'Muhammad Bondan Vitto Ramadhan', '085954709811', 'bondanvitto2'],
+        [17, 'Bulungan-Surabaya', 'Jakarta Selatan', '-', '-', 'Muhammad Bondan Vitto Ramadhan', '06211840000086', '085954709811', 'bondanvitto2', 'Muhammad Bondan Vitto Ramadhan', '085954709811', 'bondanvitto2'],
         [18, 'BandITS [Bandung-ITS]', 'Bandung', '@ycj8660c', 'bandung.its', 'Bima Putra', '06211640000124', '081519559230', 'WhyAlwaysMe2', 'Abdillah Ramadian', '089665373416', 'rpiabdillah'],
         [19, 'IRITS BTR', 'Riau', '@wht7227v', 'iritsbtr', 'Arif Darma Althia', '05111740000182', '081230024143', 'arifda', 'Arialdi Almonda', '081261622370', 'arialdialmonda21'],
         [20, 'IMAKUSA', 'Kudus', '@iya7617t', '@imakusa_', 'Hisam Widi Prayoga', '05111740000026', '082399146886', 'cornetz', 'Rizqi Dzulkifli', '08989925275', 'rizqidzul'],
@@ -47,7 +47,7 @@ class FordaSeder extends Seeder
         [36, 'ITS Bersenyum', 'Temanggung', '-', '-', 'Galuh Ajeng P.', '06211540000130', '081542310239', 'galuhajengprabeswari', 'Antonius Yoma W.', '089648439328', 'luckyuntung1'],
         [37, 'JANGKAR PASURUAN', 'PASURUAN', '-', '-', 'Aqil Wira Sakti Adli', '04211740000013', '082334373437', 'aqilwira', 'Goldio Ihza', '085649444451', 'Goldionirvana'],
         [38, 'IMAGESITS', 'Gresik', '@mup3927z', 'Imagesits', 'Moh Faslil Fawaidi', '02311740000114', '082244687060', 'faslilf', 'Ahmad Wahyudi Firmansyah', '085731749789', 'frmsyhahmad'],
-        [69, 'Forda jogja', 'Yogjakarta Jogjakarta', '-', '-', 'Cleverza muhammad syah', '021117640000136', '083867886132', 'Cleverza1999', 'Pradenta wisnu', '082134382773', 'Pradentawa'],
+        [69, 'Forda jogja', 'Yogjakarta', '-', '-', 'Cleverza muhammad syah', '021117640000136', '083867886132', 'Cleverza1999', 'Pradenta wisnu', '082134382773', 'Pradentawa'],
         [46, 'FORMASTA Surabaya', 'Tulungagung', '-', 'independent_its', 'Aditya Galih Prawira', '03111740000061', '085852141360', 'xxxfactorxxx', 'Aditya Galih Prawira', '085852141360', 'xxxfactorxxx'],
         [47, 'LAROS ITS', 'BANYUWANGI', '@dks3446k', 'laros_its', 'MOHAMMAD IMRON', '02411740000047', '08383581214', 'imron_013', 'AMAL MULYA SETIAWAN', '082331659052', 'amalms196'],
         [48, 'Surabaya Family of Rain City', 'Bogor', '@gtp7101r', '@safary_bogor', 'Pradiza Naufal R', '04311740000087', '087874654721', 'Pradizanr', 'Pradiza Naufal R', '087874654721', 'Pradizanr'],
@@ -82,7 +82,7 @@ class FordaSeder extends Seeder
         [86, 'PLAT G', 'Tegal', '-', '-', 'Tengku Rafli R', '07111740000091', '085742125107', 'tengku030899', 'Lukmanul Hakim', '081567635983', 'lukmansora'],
         [87, 'Banyumas ITS', 'Banyumas', '-', '-', 'Titius Kamajaya', '04111640000089', '085743265835', 'titiusk', 'Titius Kamajaya', '085743265835', 'titiusk'],
         [88, 'CEPITS', 'Cepu', '-', '-', 'Devian Bayu Prakoso', '10311700000043', '087856405452', 'devianbayuprakoso_', 'Devian Bayu Prakoso', '08991932139', 'kukuh.setya'],
-        [89, 'Argabayu', 'Nganjuk', '@khm0031b', 'argabayuofficial', 'dwi santoso', '02211740000034', '085331724191', 'dwisantoso7', 'Fitria', '085731244226', '085731244226']
+        [89, 'Argabayu', 'Nganjuk', '@k     hm0031b', 'argabayuofficial', 'dwi santoso', '02211740000034', '085331724191', 'dwisantoso7', 'Fitria', '085731244226', '085731244226']
     ];
     $x=1;
     foreach($forda as $data){

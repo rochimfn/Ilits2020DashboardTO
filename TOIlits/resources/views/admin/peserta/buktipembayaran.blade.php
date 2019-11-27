@@ -19,25 +19,29 @@
 <div class="alert alert-warning">
         Berkas anda masih direview oleh forda,mohon menunggu
     </div>
-    @elseif($peserta->status=='1')
-    <div class="alert alert-success">
-            Berkas anda sudah diterima oleh forda
-        </div>
-    @endif
     <div class="row">
             <div class="form-group col-md-4 col-sm-6">
                 <label>Kartu Pelajar</label><br>
-                <img class="img img-fluid img-thumbnail" src="images/kartupelajar/{{ $peserta->kartu_pelajar }}" style="max-width: 200px;"
+                <img class="img img-fluid img-thumbnail" src="images/kartupelajar/{{$forda}}/{{ $peserta->kartu_pelajar }}" style="max-width: 200px;"
                     />
                 
             </div>
             <div class="form-group col-md-4 col-sm-6">
                     <label>Bukti Pembayaran</label><br>
-                    <img class="img img-fluid img-thumbnail" src="images/bukti/{{ $peserta->bukti_bayar }}" style="max-width: 200px;"
+                    <img class="img img-fluid img-thumbnail" src="images/bukti/{{$forda}}/{{ $peserta->bukti_bayar }}" style="max-width: 200px;"
                         />
             </div>
         </div>
-    
+        @elseif($peserta->status=='1')
+        <center>
+                <h4>Berkas anda telah diterima oleh forda</h4><br>
+                <i class="fas fa-check-circle" style="font-size:150px;color:green"></i><br>
+                <h4>Untuk melanjutkan pendaftaran di platform Zeniora, silahkan klik tombol di bawah ini</h4><br>
+                <a href="https://zeniora.education/login/google"><button class="btn btn-danger">Lanjutkan Pendaftaran</button></a>
+                
+        </center>
+            
+        @endif
 @else
 @if($peserta->status=='2')
 <div class="alert alert-danger">

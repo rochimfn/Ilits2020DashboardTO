@@ -63,8 +63,12 @@ Route::get('/notifikasi','PesertaController@HalamanNotif')->middleware('CekLogin
 Route::get('/kelola_notifikasi','FordaController@HalamanNotif')->middleware('CekLogin', 'CekStatusForda');
 Route::get('/cetak_absen','FordaController@CetakAbsen')->middleware('CekLogin', 'CekStatusForda');
 //Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::get('/daftar_peserta','FordaController@HalamanDaftarPeserta')->middleware('CekLogin', 'CekStatusForda');
+Route::get('/jumlah_peserta','PesertaController@HalamanJumlah');
+Route::get('/get_location/{id}','AuthController@GetLocation');
+Route::get('/under_construction',function(){
+return view('/under_construction');
+});
 //POST
 Route::post('/proses_register', 'AuthController@ProsesRegister');
 Route::post('/proses_login', 'AuthController@ProsesLogin');

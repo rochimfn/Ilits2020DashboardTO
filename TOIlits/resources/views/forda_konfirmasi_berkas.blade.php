@@ -32,11 +32,11 @@
                     <div class="row">
                         <div class="col-md-4">
                             <b>Kartu Pelajar</b><br>
-                                <img src="/images/kartupelajar/{{$data->kartu_pelajar}}" class="img img-fluid img-thumbnail" style="max-witdh:200px;max-height:300px">
+                                <img src="/images/kartupelajar/{{$forda}}/{{$data->kartu_pelajar}}" class="img img-fluid img-thumbnail" style="max-witdh:200px;max-height:300px">
                         </div>
                         <div class="col-md-4">
                                 <b>Bukti Pembayaran</b><br>
-                                    <img src="/images/bukti/{{$data->bukti_bayar}}" class="img img-fluid img-thumbnail" style="max-witdh:200px;max-height:300px">
+                                    <img src="/images/bukti/{{$forda}}/{{$data->bukti_bayar}}" class="img img-fluid img-thumbnail" style="max-witdh:200px;max-height:300px">
                             </div>
                     </div>
                     <div class="row">

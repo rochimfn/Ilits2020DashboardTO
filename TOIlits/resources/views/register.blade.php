@@ -108,12 +108,13 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-users"></i></span>
                                         </div>
-                                          <select class="form-control" name="forda">
+                                          <select class="form-control" name="forda" id="forda">
                                             @foreach($forda as $data)
                                                 <option value="{{ $data->id }}">{{$data->nama}}</option>
                                             @endforeach
                                           </select>
                                         </div>
+                                        <small id="location" class="form-text text-muted">Lokasi : </small>
                                     </div>
                                 </div>
                                 <div class="text-center">
@@ -153,6 +154,9 @@
 
     <script>
             $(document).ready(function () {
+                $('#forda').change(function(){
+                    GetLocation($('#forda').val());
+                })
                 $('#form').validate({ // initialize the plugin
                     rules: {
                         no_wa: {
@@ -161,7 +165,19 @@
                         }
                     }
                 });
+                GetLocation($('#forda').val());
             });
+
+            function GetLocation(id){
+                $.ajax({
+                    url:'{{ url('')}}/get_location/'+id,
+                    method:'GET',
+                    success:function(data){
+                        var json = JSON.parse(data);
+                        $('#location').html('Lokasi : '+json.daerah);
+                    }
+                })
+            }
     </script>
 </body>
 

@@ -111,7 +111,7 @@ class AuthController extends Controller
             'status' => '0'
         ]);
 
-        return redirect('/');}
+        return redirect('/')->with(['pesan'=>'Pendaftaran Berhasil','tipe'=>'success']);}
         catch (\Illuminate\Database\QueryException $e){
             $errorCode = $e->errorInfo[1];
             if($errorCode == 1062){
@@ -134,6 +134,7 @@ class AuthController extends Controller
                         'role' => 'peserta'
                     ]);
                     File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'3'] ?>");
+                    return redirect('/notifikasi');
                 } elseif ($user->role == 'forda') {
                     $forda = Forda::where('user_id',  $user->id)->first();
                     $request->session()->put([
@@ -143,6 +144,7 @@ class AuthController extends Controller
                         'role' => 'forda'
                     ]);
                     File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'1'] ?>");
+                    return redirect('/daftar_peserta');
                 } elseif ($user->role == 'admin') {
                     $request->session()->put([
                         'id' => $user->id,
@@ -151,8 +153,9 @@ class AuthController extends Controller
                         'role' => 'admin'
                     ]);
                     File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'2'] ?>");
+                    return redirect('/dashboard');
                 }
-                return redirect('/dashboard');
+                
             }
         }
         return redirect('/')->with([
@@ -169,5 +172,11 @@ class AuthController extends Controller
         } else {
             return false;
         }
+    }
+
+    function GetLocation($id)
+    {
+        $forda = Forda::select('daerah')->where('id',$id)->first();
+        echo $forda;
     }
 }

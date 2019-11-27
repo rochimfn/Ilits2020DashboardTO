@@ -14,6 +14,8 @@
             {{ $n->pengumuman}}
         </div>
     @endforeach
+
+    <p style="position:absolute;bottom:0"><b>Untuk informasi lebih lanjut hubungi : {{$forda->hp_ketua}} ({{$forda->nama_ketua}})</b></p>
 @stop
 
 @section('css')
@@ -21,7 +23,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
 @stop
 
 @push('css')

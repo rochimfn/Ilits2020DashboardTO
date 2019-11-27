@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Peserta;
 use App\Pengumuman;
+use App\Forda;
 use PDF;
 class FordaController extends Controller
 {
     function HalamanBerkas(Request $request){
 
         $peserta=Peserta::whereNotNull('bukti_bayar')->where('status','0')->get();
+        $forda = Forda::where('id',$request->session()->get('id'))->first();
         return view('forda_konfirmasi_berkas',[
-            'peserta'=>$peserta
+            'peserta'=>$peserta,
+            'forda'=>$forda->nama
         ]);
     }
     function HalamanNotif(Request $request){
@@ -21,8 +24,15 @@ class FordaController extends Controller
             'notif'=>$notif
         ]);
     }
+
+    function HalamanDaftarPeserta(Request $request){
+        $peserta  = Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->get();
+        return view('daftarpeserta',[
+            'peserta'=>$peserta
+        ]);
+    }
     function CetakAbsen(Request $request){
-        $peserta = Peserta::where('forda_id',$request->session()->get('id'))->get();
+        $peserta = Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->get();
         $data = [
             'peserta'=>$peserta,
             'forda'=>$request->session()->get('nama')

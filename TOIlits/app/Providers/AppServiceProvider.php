@@ -32,14 +32,14 @@ class AppServiceProvider extends ServiceProvider
             $totalEvent = \App\Kalender::count();
             $event->menu->add('NAVIGASI UTAMA');
             $event->menu->add([
-                'text' => 'Kirim Pesan',
-                'url' => '/kelola_notifikasi',
-                'icon' => 'fas fa-fw fa-envelope-open-text',
+                'text'        => 'Daftar Peserta',
+                'url'         => '/daftar_peserta',
+                'icon'        => 'fas fa-fw fa-print',
             ]);
             $event->menu->add([
-                'text'        => 'Cetak Absen',
-                'url'         => '/cetak_absen',
-                'icon'        => 'fas fa-fw fa-print',
+                'text' => 'Notifikasi',
+                'url' => '/kelola_notifikasi',
+                'icon' => 'fas fa-fw fa-envelope-open-text',
             ]);
             $event->menu->add([
                 'text'        => 'Upcoming Event',
@@ -51,14 +51,10 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
                 'text' => 'Profil',
-                'url'  => 'admin/settings',
+                'url'  => '/under_construction',
                 'icon' => 'fas fa-fw fa-user',
             ]);
-            $event->menu->add([
-                'text' => 'Reset Password Peserta',
-                'url'  => 'admin/settings',
-                'icon' => 'fas fa-fw fa-lock',
-            ]);
+            
             $event->menu->add('PEMBAYARAN');
             $event->menu->add([ 'text' => 'Konfirmasi Pembayaran',
             'icon' => 'far fa-fw fa-check-circle',
@@ -83,7 +79,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
                 'text' => 'Profil',
-                'url'  => 'admin/settings',
+                'url'  => '/under_construction',
                 'icon' => 'fas fa-fw fa-user',
             ]);
 
@@ -118,7 +114,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
                 'text' => 'Profil',
-                'url'  => '/profil',
+                'url'  => '/under_construction',
                 'icon' => 'fas fa-fw fa-user',
             ]);
             $event->menu->add('UPLOAD');
