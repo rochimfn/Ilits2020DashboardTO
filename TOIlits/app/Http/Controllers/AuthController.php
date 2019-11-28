@@ -108,7 +108,8 @@ class AuthController extends Controller
             'no_wa' => $request->input('no_wa'),
             'bukti_bayar' => null,
             'kartu_pelajar' => null,
-            'status' => '0'
+            'status' => '0',
+            'pilihan_tryout'=>$request->input('pilihan_tryout')
         ]);
 
         return redirect('/')->with(['pesan'=>'Pendaftaran Berhasil','tipe'=>'success']);}

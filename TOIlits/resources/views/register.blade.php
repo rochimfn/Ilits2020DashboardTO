@@ -115,7 +115,25 @@
                                           </select>
                                         </div>
                                         <small id="location" class="form-text text-muted">Lokasi : </small>
-                                    </div>
+                                </div>
+                                <label>Pilihan Try Out</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="pilihan_tryout" value="1" checked>
+                                    Saintek
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="pilihan_tryout" value="2">
+                                        Soshum
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="pilihan_tryout" value="3">
+                                        Campuran
+                                  </label>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Sign up</button>
