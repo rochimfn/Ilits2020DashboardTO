@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Forda;
 class FordaSeder extends Seeder
@@ -89,7 +90,7 @@ class FordaSeder extends Seeder
         User::create([
             'role'=>'forda',
             'username'=>'forda'.$x,
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+            'password'=>Hash::make('passwordasdefg')
         ]);
         $user = User::orderBy('id','desc')->first();
         Forda::create([
