@@ -36,8 +36,9 @@
         <center>
                 <h4>Berkas anda telah diterima oleh forda</h4><br>
                 <i class="fas fa-check-circle" style="font-size:150px;color:green"></i><br>
-                <h4>Untuk melanjutkan pendaftaran di platform Zeniora, silahkan klik tombol di bawah ini</h4><br>
-                <a href="https://zeniora.education/login/google"><button class="btn btn-danger">Lanjutkan Pendaftaran</button></a>
+                <h4>Silahkan tunggu informasi selanjutnya dari Forda untuk teknis pelaksanaan tryout. <br>Jangan lupa daftar dan pasang aplikasi Zeniora Education untuk mengikuti tryout online.</h4><br>
+                <a class="btn" href="https://play.google.com/store/apps/details?id=com.zeniora" target="__blank" style="background:#000;width:auto;color:#fff;padding-right:40px;">
+                        <img class="img-fluid" src="http://www.userlogos.org/files/logos/jumpordie/google_play_04.png" style="float:left;height:40px"><small>Available on</small><br><strong>Google Play</strong></a>
                 
         </center>
             

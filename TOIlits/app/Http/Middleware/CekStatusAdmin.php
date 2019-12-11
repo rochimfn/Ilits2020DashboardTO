@@ -18,6 +18,6 @@ class CekStatusAdmin
         if ($request->session()->get('role') == 'admin') {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }

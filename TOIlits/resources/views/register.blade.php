@@ -84,7 +84,8 @@
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
                                         <input class="form-control" name="password" placeholder="Password" type="password" required pattern=".{6,12}">
-                                    </div>
+                                        
+                                    </div><small>Password terdiri dari 6-12 karakter</small>
                                 </div>
 
                                 <div class="form-group mb-3">
@@ -129,12 +130,20 @@
                                         Soshum
                                   </label>
                                 </div>
+                                <label class="mt-4">Jenis Try Out</label>
                                 <div class="form-check">
                                     <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="pilihan_tryout" value="3">
-                                        Campuran
+                                    <input type="radio" class="form-check-input" name="tryout_online" value="0" checked>
+                                    Offline
                                   </label>
                                 </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="tryout_online" value="1">
+                                    Online
+                                  </label>
+                                </div>
+                                
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary">Sign up</button>
                                 </div>

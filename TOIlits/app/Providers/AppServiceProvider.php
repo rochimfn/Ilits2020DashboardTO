@@ -50,9 +50,9 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
-                'text' => 'Profil',
-                'url'  => '/under_construction',
-                'icon' => 'fas fa-fw fa-user',
+                'text' => 'Ganti Password',
+                'url'  => '/ganti_password',
+                'icon' => 'fas fa-lock',
             ]);
             
             $event->menu->add('PEMBAYARAN');
@@ -78,9 +78,9 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
-                'text' => 'Profil',
-                'url'  => '/under_construction',
-                'icon' => 'fas fa-fw fa-user',
+                'text' => 'Ganti Password',
+                'url'  => '/ganti_password',
+                'icon' => 'fas fa-lock',
             ]);
 
             $event->menu->add('GENERATOR');
@@ -113,9 +113,9 @@ class AppServiceProvider extends ServiceProvider
             ]);
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
-                'text' => 'Profil',
-                'url'  => '/under_construction',
-                'icon' => 'fas fa-fw fa-user',
+                'text' => 'Ganti Password',
+                'url'  => '/ganti_password',
+                'icon' => 'fas fa-lock',
             ]);
             $event->menu->add('UPLOAD');
             $event->menu->add([

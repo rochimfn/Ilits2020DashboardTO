@@ -44,6 +44,34 @@ class AuthController extends Controller
         }
         return redirect('/');
     }
+
+    function HalamanGantiPassword(){
+        return view('gantipassword');
+    }
+
+    function ProsesGantiPassword(Request $request){
+        if($request->session()->get('role')=='peserta'){
+            $peserta = Peserta::where('id',$request->session()->get('id'))->first();
+            $user = User::where('id',$peserta->user_id)->first();
+        }
+        elseif($request->session()->get('role')=='forda'){
+            $forda = Forda::where('id',$request->session()->get('id'))->first();
+            $user = User::where('id',$forda->user_id)->first();
+        }
+        else{
+            $user = User::where('id',$request->session()->get('id'))->first();
+        }
+        
+        if(Hash::check($request->input('passwordlama'), $user->password)){
+            $user->update([
+                'password'=>Hash::make($request->input('passwordbaru'))
+            ]);
+            return redirect('/ganti_password')->with(['pesan'=>'Berhasil mengubah password','tipe'=>'success']);
+        }else{
+            return redirect('/ganti_password')->with(['pesan'=>'Password lama tidak cocok','tipe'=>'danger']);
+        }
+    }
+
     function ProsesRequestLupaPassword(Request $request)
     {
         $user = User::where('username', $request->input('email'));
@@ -108,6 +136,7 @@ class AuthController extends Controller
             'no_wa' => $request->input('no_wa'),
             'bukti_bayar' => null,
             'kartu_pelajar' => null,
+            'tryout_online'=> $request->input('tryout_online'),
             'status' => '0',
             'pilihan_tryout'=>$request->input('pilihan_tryout')
         ]);

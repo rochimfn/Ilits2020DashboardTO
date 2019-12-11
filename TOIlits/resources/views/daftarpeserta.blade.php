@@ -15,6 +15,8 @@
                 <th>Nama</th>
                 <th>Asal Sekolah</th>
                 <th>No Telepon</th>
+                <th>Jurusan Try Out</th>
+                <th>Tipe Try Out</th>
             </tr>
         </thead>
         <tbody>
@@ -34,10 +36,23 @@
 <script>
     var data=[];
     @foreach($peserta as $e)
+    @if($e->pilihan_tryout=='1')
+        let materi = "Saintek";
+    @elseif($e->pilihan_tryout=='2')
+        let materi="Soshum";
+    @endif
+
+    @if($e->tryout_online=='0')
+        let tipe="Offline";
+    @elseif($e->tryout_online=='1')
+        let tipe="Online";
+    @endif
         data.push([
             '{{ $e->nama }}',
             '{{ $e->asal_sekolah }}',
-            '{{ $e->no_wa }}'
+            '{{ $e->no_wa }}',
+            materi,
+            tipe
     ]);
     @endforeach
     $(document).ready( function () {

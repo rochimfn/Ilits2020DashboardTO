@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CekStatusForda
+class CekStatusPeserta
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,9 @@ class CekStatusForda
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->get('role')=='forda'){
-        return $next($request);}
+        if($request->session()->get('role')=='peserta'){
+            return $next($request);
+        }
         return redirect('/dashboard');
     }
 }
