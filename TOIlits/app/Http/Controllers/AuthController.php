@@ -16,7 +16,7 @@ class AuthController extends Controller
     function HalamanRegister(Request $request)
     {
         if (!$request->session()->get('login')) {
-            $forda = Forda::orderBy('nama', 'asc')->get();
+            $forda = Forda::get();
             return view('register', [
                 'forda' => $forda
             ]);
