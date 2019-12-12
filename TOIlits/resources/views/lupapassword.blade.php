@@ -31,28 +31,32 @@
         <link href="auth/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
         <!-- CSS Files -->
         <link href="auth/css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+        <style>
+            body {
+                background-image: url("/images/fogs.jpg");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+        </style>
     </head>
     
     <body class="bg-default">
         <div class="main-content">
             <!-- Header -->
-            <div class="header bg-gradient-primary py-7 py-lg-8">
+            <div class="header py-7 py-lg-6">
                 <div class="container">
                     <div class="header-body text-center mb-7">
                         <div class="row justify-content-center">
                             <div class="col-lg-5 col-md-6">
-                                <h1 class="text-white">Lupa Password</h1>
-                                <p class="text-lead text-white">Masukkan email anda di field yang disediakan.</p>
+                                <h1 class="text-black" style="font-weight: bold">Lupa Password</h1>
+                                <p class="text-lead text-black">Masukkan email anda di field yang disediakan.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="separator separator-bottom separator-skew zindex-100">
-                    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-                    </svg>
-                </div>
+                
             </div>
             <!-- Page content -->
             <div class="container mt--8 pb-5">
@@ -92,18 +96,7 @@
                     </div>
                 </div>
             </div>
-            <footer class="py-5">
-                <div class="container">
-                    <div class="row align-items-center justify-content-xl-between">
-                        <div class="col-xl-6">
-                            <div class="copyright text-center text-xl-left text-muted">
-                                Template by <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                    target="_blank">Creative Tim</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            
         </div>
         <!--   Core   -->
         <script src="auth/js/plugins/jquery/dist/jquery.min.js"></script>
