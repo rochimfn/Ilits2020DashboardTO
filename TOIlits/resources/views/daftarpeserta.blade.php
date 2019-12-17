@@ -16,7 +16,6 @@
                 <th>Asal Sekolah</th>
                 <th>No Telepon</th>
                 <th>Jurusan Try Out</th>
-                <th>Tipe Try Out</th>
             </tr>
         </thead>
         <tbody>
@@ -42,17 +41,11 @@
         let materi="Soshum";
     @endif
 
-    @if($e->tryout_online=='0')
-        let tipe="Offline";
-    @elseif($e->tryout_online=='1')
-        let tipe="Online";
-    @endif
         data.push([
             '{{ $e->nama }}',
             '{{ $e->asal_sekolah }}',
             '{{ $e->no_wa }}',
-            materi,
-            tipe
+            materi
     ]);
     @endforeach
     $(document).ready( function () {

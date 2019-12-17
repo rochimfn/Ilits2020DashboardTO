@@ -137,8 +137,8 @@ class AuthController extends Controller
             'bukti_bayar' => null,
             'kartu_pelajar' => null,
             'tryout_online'=> $request->input('tryout_online'),
-            'status' => '0',
-            'pilihan_tryout'=>$request->input('pilihan_tryout')
+            'status' => '0'
+            
         ]);
 
         return redirect('/')->with(['pesan'=>'Pendaftaran Berhasil','tipe'=>'success']);}

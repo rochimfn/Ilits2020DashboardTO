@@ -49,8 +49,7 @@
             <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>Materi Try Out</th>
-                <th>Tipe Try Out</th>
+                <th>Jurusan Try Out</th>
                 <th>Token</th>
                 <th>TTD</th>
             </tr>
@@ -67,13 +66,7 @@
                             Soshum
                         @endif
                     </td>
-                    <td>
-                        @if($p->tryout_online=='0')
-                            Offline
-                        @elseif($p->tryout_online=='1')
-                            Online
-                        @endif
-                    </td>
+                    
                     <td>ILITS-##-#####-#-###</td>
                     <td style="width:100px;">
                         

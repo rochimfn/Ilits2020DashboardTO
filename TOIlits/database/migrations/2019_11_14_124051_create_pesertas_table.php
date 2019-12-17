@@ -24,7 +24,6 @@ class CreatePesertasTable extends Migration
             $table->tinyInteger('status');
             $table->string('kartu_pelajar')->default(null)->nullable();
             $table->tinyInteger('pilihan_tryout')->comment('1=saintek,2=soshum')->default(1);
-            $table->tinyInteger('tryout_online')->comment('0=tidak,1=ya')->default(0);
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('forda_id')->references('id')->on('forda')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

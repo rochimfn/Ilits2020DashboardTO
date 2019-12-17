@@ -15,40 +15,41 @@ class FordaSeder extends Seeder
     public function run()
     {
         $forda = [
-        [ 'FORDA Madiun', 'Madiun', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-        [ 'Forum Bocah Bojonegoro ITS PENS PPNS', 'Bojonegoro', '-', 'forbbits', 'Muhammad Fathmi Rajzi Kuncoro', '04311740000072', '085728776588', 'fahmirajzi', 'Prisma Riashuda Prakosa', '082229448083', 'prismahuda'],
-        [ 'IKAMADIRI', 'Kediri', '-', '@ikamadiri_its', 'Dennis Chaniago Ramadhan', '04211640000067', '081330823117', 'chaniagodennis', 'Muhammad Naufal Rasyad', '085736586331', 'mnaufalrsyd'],
-        [ 'IMAKUSA', 'Kudus', '@iya7617t', '@imakusa_', 'Hisam Widi Prayoga', '05111740000026', '082399146886', 'cornetz', 'Rizqi Dzulkifli', '08989925275', 'rizqidzul'],
-        [ 'Forsmawi ', 'Ngawi', '-', 'Forsmawisurabaya', 'Rendy Vredi Ristanto', '04211640000070', '085604304822', 'rendyvredi9', 'Rendy &amp; Ardiansyah', '085604304822', 'rendyvredi9'],
-        [ 'LAROS ITS', 'BANYUWANGI', '@dks3446k', 'laros_its', 'MOHAMMAD IMRON', '02411740000047', '08383581214', 'imron_013', 'AMAL MULYA SETIAWAN', '082331659052', 'amalms196'],
-        [ 'Keluarga Mahasiswa Tanah Daeng', 'Sulawesi Selatan', '@ihp7419b, @qnk4019n', '@kandaits, @esn.its', 'Ivandy Halim', '08211640000084', '081355559833', 'fandifnd', 'Fadhli Ismail Hatta', '081354520305', 'fadhliih'],
-        [ 'FORDA BONTANG', 'BONTANG', '-', '-', 'Jesly Theonof Andi Lolo Sitoru', '02111840000145', '08115499144', 'Jeslyt', 'Qais F. Azhar', '082251186160', '-'],
-        [ 'IKARSID', 'Sidoarjo, Jawa Timur', '-', '-', 'Mohammad Daffa Rizqi Siddieq', '02511840000114', '082131755593', 'daffarizqi2', 'Mohammad Daffa Rizqi Siddieq', '082264942941', 'xbiufx'],
-        [ 'Saburai Community', 'Lampung', '@mot4949n', 'saburai_community', 'Muhammad Andhika', '04211641000035', '082182700365', 'Mandhikaa12', 'M. Kevin Novrian', '083170951629', 'kevinnvrn'],
-        [ 'Forum Bumi Anoa [FORBUNOA]', 'Sulawesi Tenggara', '-', '-', 'Isaal Febriansya', '09111640000116', '082299192626', 'isaal1998', 'Abdul Rahmat', '085398756762', 'abdulrahmat48'],
-        [ 'FORDA Tangerang', 'Tangerang', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-        [ 'Cirebon "kita ira"', 'Cirebon, Jawa Barat', '-', 'cirebonkitaira', 'Rafiedhia Abel', '02511740000024', '081230152772', 'Rafiedhiaabel', 'Muhammad Fahmi Adiman', '082127329223', 'adimanfahmi95'],
-        [ 'FORDA Bali', 'Bali', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-        [ 'IRITS BTR', 'Riau', '@wht7227v', 'iritsbtr', 'Arif Darma Althia', '05111740000182', '081230024143', 'arifda', 'Arialdi Almonda', '081261622370', 'arialdialmonda21'],
-        [ 'Forda jogja', 'Yogyakarta', '-', '-', 'Cleverza muhammad syah', '021117640000136', '083867886132', 'Cleverza1999', 'Pradenta wisnu', '082134382773', 'Pradentawa'],
-        [ 'IMJ [Ikatan Mahasiswa Jombang]', 'Jombang', '-', 'imj.its', 'Irwansyah', '10111710000035', '082257540502', 'Irwans990', 'Alif Azizia Putri M', '085748559926', 'Alifaziziaa'],
-        [ 'Argabayu', 'Nganjuk', '@khm0031b', 'argabayuofficial', 'dwi santoso', '02211740000034', '085331724191', 'dwisantoso7', 'Fitria', '085731244226', '085731244226'],
-        [ 'Lingkup Mahasiswa Sumatera Selatan', 'Palembang dan sekitarnya', '@anu0652m', 'limas_sby', 'Muhammad Ridho Adiputra', '04311740000053', '081958500976', 'ridho_adiputra', 'Muhammad Revindo Moza', '08154024071', 'revindomoza'],
-        [ 'FORDA Wonogiri', 'Wonogiri', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-        [ 'IMPLISIT', 'Lombok ', '-', 'Implisit_its', 'Muhammad Ashobta Azry', '02311640000107', '081237491827', 'ashobta', 'Muhammad Anis Raihan', '087765459680', 'iananala'],
-        [ 'Formabaya ITS', 'Blitar Raya', '@hwf5111a', '-', 'Robby Hartadi', '07211640000028', '085649399103', 'robbyhartadi', 'Alif Muftihan Rizaq', '082228244188', 'maharanisintan'],
-        [ 'IKAMALA ITS', 'LAMONGAN', '-', '@ikamalaits', 'Moh. Azam Aufar Rizky', '10111710000083', '085890501103', 'azamaufar', 'Moh. Azam Aufar Rizky', '085890501103', 'azamaufar'],
-        [ 'IMAMI SURABAYA', 'SUMATERA BARAT', '@ldm3999c', '@imami_sby', 'ADRIAN FIKTA NUGRAHA', '02411640000084', '082174670315', '@adrianfikta', 'Hidayattul Rafli', '08893026951', 'Hdyt.rfli'],
-        [ 'IMM ITS', 'Mojokerto', '@day1303f', '@immi_its', 'Alvin Rahmad Widyanto', '01211640000038', '082132779933', '@alvin_widiyanto', 'Alvin Rahmad Widyanto', '082132779933', '@alvin_widiyanto'],
-        [ 'FORMASTA Surabaya', 'Tulungagung', '-', 'independent_its', 'Aditya Galih Prawira', '03111740000061', '085852141360', 'xxxfactorxxx', 'Aditya Galih Prawira', '085852141360', 'xxxfactorxxx'],
-        [ 'Ikemas surabaya', 'Sukoharjo', '@lha3494j', 'Ikemas_sby', 'Bintang pratama', '07111740000009', '081227033630', '_bintangpratama', 'Zulfikar syaifudin H.B', '085880587933', 'zul230599'],
-        [ 'FORMAS ITS PENS PPNS', 'Sampang, Madura', '@kro8921s', 'formassampang_', 'Fahmi Aulia Rahman', '10211600000088', '082301711211', 'fahmixp4z', 'Andiyana Ilham Wahyudi', '083850184601', 'andiyanaw'],
-        [ 'ATLAS', 'Semarang', '-', '-', 'Hanggayu Aly Sabtiadi', '02511640000099', '081904403023', 'hangga_aly', 'Rafif Fairuza', '081901747804', 'rafifairuza'],
-        [ 'JANGKAR PASURUAN', 'PASURUAN', '-', '-', 'Aqil Wira Sakti Adli', '04211740000013', '082334373437', 'aqilwira', 'Goldio Ihza', '085649444451', 'Goldionirvana'],
-        [ 'Rumah Rotan', 'Tuban, Jawa Timur', '@yfo9343u', 'rumahrotan3', 'Tito Bingar Saputra', '1310161034', '085707225887', 'titobs54', 'Muhammad Husnir Rahman', '081330262447', 'mhusnir'],
-        [ 'ITS Ponorogo', 'Ponorogo', '-', '-', 'Srie Harnanda', '03111840000142', '082221615075', 'srieharnanda', 'Srie Harnanda', '082221615075', 'srieharnanda'],
-        [ 'FORDA Blitar', 'Blitar', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-        [ 'IMaBITS', 'Bangkalan', '@fbb9912c', '@imabits_bkl', 'Budi Raharja', '10311700000006', '087850170735', '_raharjabudi', 'Iro Datus Soleha', '085231045429', 'irodatussoleha'],
+        [ 'FORDA Madiun', 'Madiun', '-', '-', '-', '-', '-', '-', '-', '-', '-',0],
+        [ 'Forum Bocah Bojonegoro ITS PENS PPNS', 'Bojonegoro', '-', 'forbbits', 'Muhammad Fathmi Rajzi Kuncoro', '04311740000072', '085728776588', 'fahmirajzi', 'Prisma Riashuda Prakosa', '082229448083', 'prismahuda',0],
+        [ 'IKAMADIRI', 'Kediri', '-', '@ikamadiri_its', 'Dennis Chaniago Ramadhan', '04211640000067', '081330823117', 'chaniagodennis', 'Muhammad Naufal Rasyad', '085736586331', 'mnaufalrsyd',0],
+        [ 'IMAKUSA', 'Kudus', '@iya7617t', '@imakusa_', 'Hisam Widi Prayoga', '05111740000026', '082399146886', 'cornetz', 'Rizqi Dzulkifli', '08989925275', 'rizqidzul',0],
+        [ 'Forsmawi ', 'Ngawi', '-', 'Forsmawisurabaya', 'Rendy Vredi Ristanto', '04211640000070', '085604304822', 'rendyvredi9', 'Rendy &amp; Ardiansyah', '085604304822', 'rendyvredi9',0],
+        [ 'LAROS ITS', 'BANYUWANGI', '@dks3446k', 'laros_its', 'MOHAMMAD IMRON', '02411740000047', '08383581214', 'imron_013', 'AMAL MULYA SETIAWAN', '082331659052', 'amalms196',0],
+        [ 'Keluarga Mahasiswa Tanah Daeng', 'Sulawesi Selatan', '@ihp7419b, @qnk4019n', '@kandaits, @esn.its', 'Ivandy Halim', '08211640000084', '081355559833', 'fandifnd', 'Fadhli Ismail Hatta', '081354520305', 'fadhliih',1],
+        [ 'FORDA BONTANG', 'BONTANG', '-', '-', 'Jesly Theonof Andi Lolo Sitoru', '02111840000145', '08115499144', 'Jeslyt', 'Qais F. Azhar', '082251186160', '-',0],
+        [ 'IKARSID', 'Sidoarjo, Jawa Timur', '-', '-', 'Mohammad Daffa Rizqi Siddieq', '02511840000114', '082131755593', 'daffarizqi2', 'Mohammad Daffa Rizqi Siddieq', '082264942941', 'xbiufx',1],
+        [ 'Saburai Community', 'Lampung', '@mot4949n', 'saburai_community', 'Muhammad Andhika', '04211641000035', '082182700365', 'Mandhikaa12', 'M. Kevin Novrian', '083170951629', 'kevinnvrn',1],
+        [ 'Forum Bumi Anoa [FORBUNOA]', 'Sulawesi Tenggara', '-', '-', 'Isaal Febriansya', '09111640000116', '082299192626', 'isaal1998', 'Abdul Rahmat', '085398756762', 'abdulrahmat48',1],
+        [ 'FORDA Tangerang', 'Tangerang', '-', '-', '-', '-', '-', '-', '-', '-', '-',1],
+        [ 'Cirebon "kita ira"', 'Cirebon, Jawa Barat', '-', 'cirebonkitaira', 'Rafiedhia Abel', '02511740000024', '081230152772', 'Rafiedhiaabel', 'Muhammad Fahmi Adiman', '082127329223', 'adimanfahmi95',1],
+        [ 'FORDA Bali', 'Bali', '-', '-', '-', '-', '-', '-', '-', '-', '-',0],
+        [ 'IRITS BTR', 'Riau', '@wht7227v', 'iritsbtr', 'Arif Darma Althia', '05111740000182', '081230024143', 'arifda', 'Arialdi Almonda', '081261622370', 'arialdialmonda21',0],
+        [ 'Forda jogja', 'Yogyakarta', '-', '-', 'Cleverza muhammad syah', '021117640000136', '083867886132', 'Cleverza1999', 'Pradenta wisnu', '082134382773', 'Pradentawa',0],
+        [ 'IMJ [Ikatan Mahasiswa Jombang]', 'Jombang', '-', 'imj.its', 'Irwansyah', '10111710000035', '082257540502', 'Irwans990', 'Alif Azizia Putri M', '085748559926', 'Alifaziziaa',0],
+        [ 'Argabayu', 'Nganjuk', '@khm0031b', 'argabayuofficial', 'dwi santoso', '02211740000034', '085331724191', 'dwisantoso7', 'Fitria', '085731244226', '085731244226',1],
+        [ 'Lingkup Mahasiswa Sumatera Selatan', 'Palembang dan sekitarnya', '@anu0652m', 'limas_sby', 'Muhammad Ridho Adiputra', '04311740000053', '081958500976', 'ridho_adiputra', 'Muhammad Revindo Moza', '08154024071', 'revindomoza',0],
+        [ 'FORDA Wonogiri', 'Wonogiri', '-', '-', '-', '-', '-', '-', '-', '-', '-',1],
+        [ 'IMPLISIT', 'Lombok ', '-', 'Implisit_its', 'Muhammad Ashobta Azry', '02311640000107', '081237491827', 'ashobta', 'Muhammad Anis Raihan', '087765459680', 'iananala',1],
+        [ 'Formabaya ITS', 'Blitar Raya', '@hwf5111a', '-', 'Robby Hartadi', '07211640000028', '085649399103', 'robbyhartadi', 'Alif Muftihan Rizaq', '082228244188', 'maharanisintan',0],
+        [ 'IKAMALA ITS', 'LAMONGAN', '-', '@ikamalaits', 'Moh. Azam Aufar Rizky', '10111710000083', '085890501103', 'azamaufar', 'Moh. Azam Aufar Rizky', '085890501103', 'azamaufar',0],
+        [ 'IMAMI SURABAYA', 'SUMATERA BARAT', '@ldm3999c', '@imami_sby', 'ADRIAN FIKTA NUGRAHA', '02411640000084', '082174670315', '@adrianfikta', 'Hidayattul Rafli', '08893026951', 'Hdyt.rfli',0],
+        [ 'IMM ITS', 'Mojokerto', '@day1303f', '@immi_its', 'Alvin Rahmad Widyanto', '01211640000038', '082132779933', '@alvin_widiyanto', 'Alvin Rahmad Widyanto', '082132779933', '@alvin_widiyanto',1],
+        [ 'FORMASTA Surabaya', 'Tulungagung', '-', 'independent_its', 'Aditya Galih Prawira', '03111740000061', '085852141360', 'xxxfactorxxx', 'Aditya Galih Prawira', '085852141360', 'xxxfactorxxx',0],
+        [ 'Ikemas surabaya', 'Sukoharjo', '@lha3494j', 'Ikemas_sby', 'Bintang pratama', '07111740000009', '081227033630', '_bintangpratama', 'Zulfikar syaifudin H.B', '085880587933', 'zul230599',0],
+        [ 'FORMAS ITS PENS PPNS', 'Sampang, Madura', '@kro8921s', 'formassampang_', 'Fahmi Aulia Rahman', '10211600000088', '082301711211', 'fahmixp4z', 'Andiyana Ilham Wahyudi', '083850184601', 'andiyanaw',0],
+        [ 'ATLAS', 'Semarang', '-', '-', 'Hanggayu Aly Sabtiadi', '02511640000099', '081904403023', 'hangga_aly', 'Rafif Fairuza', '081901747804', 'rafifairuza',0],
+        [ 'JANGKAR PASURUAN', 'PASURUAN', '-', '-', 'Aqil Wira Sakti Adli', '04211740000013', '082334373437', 'aqilwira', 'Goldio Ihza', '085649444451', 'Goldionirvana',0],
+        [ 'Rumah Rotan', 'Tuban, Jawa Timur', '@yfo9343u', 'rumahrotan3', 'Tito Bingar Saputra', '1310161034', '085707225887', 'titobs54', 'Muhammad Husnir Rahman', '081330262447', 'mhusnir',0],
+        [ 'ITS Ponorogo', 'Ponorogo', '-', '-', 'Srie Harnanda', '03111840000142', '082221615075', 'srieharnanda', 'Srie Harnanda', '082221615075', 'srieharnanda',0],
+        [ 'FORDA Blitar', 'Blitar', '-', '-', '-', '-', '-', '-', '-', '-', '-',0],
+        [ 'IMaBITS', 'Bangkalan', '@fbb9912c', '@imabits_bkl', 'Budi Raharja', '10311700000006', '087850170735', '_raharjabudi', 'Iro Datus Soleha', '085231045429', 'irodatussoleha',0],
+        [ 'Surabaya', 'Surabaya', '-', '-', '-', '-', '-', '-', '-', '-', '-',0],
 
         [ 'FORDA SAMARINDA', 'samarinda', '-', '-', 'Muhammad Daffa R', '05211640000144', '082220687000', 'dapoy_', 'samain dulu', '082220687000', 'dapoy_'],
         [ 'FOKUS ITS', 'Sumenep,madura', '@gbg3417n', 'fokusits', 'Muhammad Rickza Nuril Iskandar', '04211640000025', '087866119969', 'mz_rick', 'Nur Rafif Maulana', '083850131831', 'rafifmaulana26'],
@@ -94,6 +95,10 @@ class FordaSeder extends Seeder
     ];
     $x=1;
     foreach($forda as $data){
+        $online=0;
+        if(count($data)==12){
+            $online = $data[11];
+        }
         User::create([
             'role'=>'forda',
             'username'=>'forda'.$x,
@@ -112,7 +117,8 @@ class FordaSeder extends Seeder
             'nama_perwakilan'=>$data[8],
             'hp_perwakilan'=>$data[9],
             'id_line_perwakilan'=>$data[10],
-            'user_id'=>$user->id
+            'user_id'=>$user->id,
+            'tryout_online'=>$online
         ]);
         $x++;
     }

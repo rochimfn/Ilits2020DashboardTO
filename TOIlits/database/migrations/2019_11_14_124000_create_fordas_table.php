@@ -26,6 +26,7 @@ class CreateFordasTable extends Migration
             $table->string('nama_perwakilan');
             $table->string('hp_perwakilan',30);
             $table->string('id_line_perwakilan',30);
+            $table->tinyInteger('tryout_online')->comment('0=tidak,1=ya')->default(0);
             $table->unsignedinteger('user_id');
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
