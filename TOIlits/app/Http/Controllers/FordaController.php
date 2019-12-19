@@ -11,9 +11,9 @@ class FordaController extends Controller
 {
     function HalamanBerkas(Request $request){
 
-        $peserta=Peserta::whereNotNull('bukti_bayar')->where('status','0')->get();
+        $peserta=Peserta::whereNotNull('bukti_bayar')->where('status','0')->where('forda_id',$request->session()->get('id'))->get();
         $forda = Forda::where('id',$request->session()->get('id'))->first();
-        return view('forda_konfirmasi_berkas',[
+        return view('/forda_konfirmasi_berkas',[
             'peserta'=>$peserta,
             'forda'=>$forda->nama
         ]);
@@ -27,7 +27,7 @@ class FordaController extends Controller
 
     function HalamanDaftarPeserta(Request $request){
         $peserta  = Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->get();
-        return view('daftarpeserta',[
+        return view('/daftarpeserta',[
             'peserta'=>$peserta
         ]);
     }

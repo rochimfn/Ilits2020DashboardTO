@@ -69,15 +69,14 @@
                         <div class="form-group">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-users"></i></span>
+                                    <span class="input-group-text"><i class="far fa-building"></i></span>
                                 </div>
                                   <select class="form-control" name="forda" id="forda">
                                     @foreach($forda as $data)
-                                        <option value="{{ $data->id }}">{{$data->nama}}</option>
+                                        <option value="{{ $data->id }}">{{$data->daerah}}</option>
                                     @endforeach
                                   </select>
                                 </div>
-                                <small id="location" class="form-text text-muted">Lokasi : </small>
                         </div>
                         <label>Pilihan Try Out</label>
                         <div class="form-check">
@@ -118,9 +117,7 @@
 
     <script>
             $(document).ready(function () {
-                $('#forda').change(function(){
-                    GetLocation($('#forda').val());
-                })
+        
                 $('#form').validate({ // initialize the plugin
                     rules: {
                         no_wa: {
@@ -129,18 +126,9 @@
                         }
                     }
                 });
-                GetLocation($('#forda').val());
+              
             });
 
-            function GetLocation(id){
-                $.ajax({
-                    url:'{{ url('')}}/get_location/'+id,
-                    method:'GET',
-                    success:function(data){
-                        var json = JSON.parse(data);
-                        $('#location').html('Lokasi : '+json.daerah);
-                    }
-                })
-            }
+           
     </script>
 @endsection
