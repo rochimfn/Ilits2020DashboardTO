@@ -69,6 +69,7 @@ Route::get('/get_location/{id}','AuthController@GetLocation');
 Route::get('/under_construction',function(){
 return view('/under_construction');
 });
+Route::get('/koreksi_tryout','FordaController@HalamanKoreksiTryout')->middleware('CekLogin', 'CekStatusForda');
 //POST
 Route::post('/proses_register', 'AuthController@ProsesRegister');
 Route::post('/proses_login', 'AuthController@ProsesLogin');
@@ -84,5 +85,6 @@ Route::post('/tambah_notif','FordaController@ProsesTambahNotif')->middleware('Ce
 Route::post('/edit_notif','FordaController@ProsesEditNotif')->middleware('CekLogin','CekStatusForda');
 Route::post('/hapus_notif','FordaController@ProsesHapusNotif')->middleware('CekLogin','CekStatusForda');
 Route::post('/proses_ganti_password','AuthController@ProsesGantiPassword')->middleware('CekLogin');
+Route::post('/proses_koreksi_tryout','FordaController@ProsesKoreksiTryout')->middleware('CekLogin','CekStatusForda');
 // Route::get('/sendEmail','MailController@KirimEmail');
 
