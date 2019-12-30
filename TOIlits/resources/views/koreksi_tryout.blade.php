@@ -15,10 +15,6 @@
             <input type="text" class="form-control" name="nama" required>
         </div>
         <div class="form-group">
-            <label for="email">Email Peserta</label>
-            <input type="email" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
             <label for="pilihan_tryout">Jenis Tryout</label>
             <select name="pilihan_tryout" required style="width:444px">
                 <option hidden disabled selected value>Pilih item</option>
