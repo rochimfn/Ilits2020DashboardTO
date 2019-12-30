@@ -48,6 +48,11 @@ class AppServiceProvider extends ServiceProvider
                 'label'       => $totalEvent,
                 'label_color' => 'success',
             ]);
+            $event->menu->add([
+                'text' => 'Koreksi Try Out',
+                'url'  => '/koreksi_tryout',
+                'icon' => 'fas fa-fw fa-check-circle',
+            ]);
             $event->menu->add('PENGATURAN AKUN');
             $event->menu->add([
                 'text' => 'Ganti Password',

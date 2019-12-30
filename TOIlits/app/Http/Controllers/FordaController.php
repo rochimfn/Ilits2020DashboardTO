@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Peserta;
 use App\Pengumuman;
 use App\Forda;
+use App\JawabanTryout;
 use PDF;
 class FordaController extends Controller
 {
@@ -23,6 +24,11 @@ class FordaController extends Controller
         return view('/notifikasi_forda',[
             'notif'=>$notif
         ]);
+    }
+
+    function HalamanKoreksiTryout(Request $request){
+        $notif = Pengumuman::where('forda_id',$request->session()->get('id'))->get();
+        return view('/koreksi_tryout');
     }
 
     function HalamanDaftarPeserta(Request $request){
@@ -65,6 +71,13 @@ class FordaController extends Controller
         Pengumuman::where('id',$request->input('id'))->delete();
         
         return redirect('/kelola_notifikasi');
+    }
+
+    function ProsesKoreksiTryout(Request $request){
+        $JawabanTryOut = $request->all();
+        JawabanTryout::create($JawabanTryOut);
+        
+        return redirect('/koreksi_tryout');
     }
 
     function ProsesTerimaBerkas(Request $request){
