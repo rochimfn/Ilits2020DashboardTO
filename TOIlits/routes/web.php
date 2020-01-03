@@ -21,7 +21,7 @@ Route::get('/notifikasi', function () {
     return view('admin.peserta.notifikasiforda');
 })->middleware('CekLogin');
 
-Route::get('/upcoming_peserta', 'PesertaController@HalamanEvent')->middleware('CekLogin','CekStatusPeserta');
+Route::get('/upcoming_peserta', 'PesertaController@HalamanEvent')->middleware('CekLogin');
 
 Route::get('/lupa_password', function () {
     return view('admin.peserta.lupapassword');

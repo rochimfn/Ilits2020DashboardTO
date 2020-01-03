@@ -60,6 +60,14 @@ class PesertaController extends Controller
                 'tipe'=>'warning'
             ]);
         }
+        if (!File::isDirectory(public_path().'/images/kartupelajar')) {
+            
+            File::makeDirectory(public_path().'/images/kartupelajar');
+        }
+        if (!File::isDirectory(public_path().'/images/bukti')) {
+            
+            File::makeDirectory(public_path().'/images/bukti');
+        }
         if (!File::isDirectory(public_path().'/images/kartupelajar/'.$forda->nama)) {
             
             File::makeDirectory(public_path().'/images/kartupelajar/'.$forda->nama);

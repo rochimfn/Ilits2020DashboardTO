@@ -33,12 +33,13 @@
 @section('js')>
 <script src="datepicker/js/bootstrap-datepicker.js"></script>
 <script>
+    let materi="";
     var data=[];
     @foreach($peserta as $e)
     @if($e->pilihan_tryout=='1')
-        let materi = "Saintek";
+        materi = "Saintek";
     @elseif($e->pilihan_tryout=='2')
-        let materi="Soshum";
+        materi="Soshum";
     @endif
 
         data.push([

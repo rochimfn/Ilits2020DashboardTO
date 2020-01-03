@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'dashboard')
+@section('title', 'Event Mendatang - Ini Lho ITS! 2020')
 <link rel="icon" href="{!! asset('images/logokecil.png') !!}"/>
 
 @section('content_header')

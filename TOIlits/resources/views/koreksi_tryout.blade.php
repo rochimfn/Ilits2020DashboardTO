@@ -10,21 +10,22 @@
 @section('content')
     <form method="POST" action="/proses_koreksi_tryout" style="max-width:40%">
         {{ csrf_field() }}
-        <div class="form-group">
-            <label for="nama">Nama Peserta</label>
-            <input type="text" class="form-control" name="nama" required>
+        <input type="hidden" name="forda_id" value="{{ Session::get('id')}}">
+        <div class="form-group row">
+            <label for="peserta" class="col-md-3">Nama Peserta</label>
+            <input type="text" class="col-md-9" name="peserta" required>
         </div>
-        <div class="form-group">
-            <label for="pilihan_tryout">Jenis Tryout</label>
-            <select name="pilihan_tryout" required style="width:444px">
+        <div class="form-group row">
+            <label for="pilihan_tryout" class="col-md-3">Jenis Tryout</label>
+            <select name="pilihan_tryout" class="col-md-9" required style="width:444px">
                 <option hidden disabled selected value>Pilih item</option>
                 <option value="1">Saintek</option>
                 <option value="2">Soshum</option>
               </select> 
         </div>
-        <div class="form-group">
-            <label for="paket">Nomor Paket</label>
-            <select name="paket" required style="width:444px">
+        <div class="form-group row">
+            <label for="paket" class="col-md-3">Nomor Paket</label>
+            <select name="paket" class="col-md-9" required style="width:444px">
                 <option hidden disabled selected value>Pilih item</option>
                 <option value="1">Paket 1</option>
                 <option value="2">Paket 2</option>
@@ -61,7 +62,7 @@
                 </label>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <label for="soal{{$i}}0">Tidak Diisi
-                    <input type="radio" name="soal{{$i}}" id="soal{{$i}}0" value="">
+                    <input type="radio" name="soal{{$i}}" id="soal{{$i}}0" value="" checked>
                 </label>
                 
                 @if ($i % 10 === 0)
@@ -72,10 +73,29 @@
             @endfor
         </div>
         
-        <button type="submit" class="btn btn-success">Submit</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modalSimpan" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="#modalTitle">Konfirmasi</h5>
+                    </div>
+                    <div class="modal-body">
+                        Apakah anda yakin ingin menyimpan jawaban peserta?<br>
+                        <b>Jawaban yang telah disimpan tidak dapat diubah</b>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Ya</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#modalSimpan">Simpan</button>
     </form>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    
 @stop

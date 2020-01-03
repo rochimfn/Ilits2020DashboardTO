@@ -27,7 +27,6 @@ class FordaController extends Controller
     }
 
     function HalamanKoreksiTryout(Request $request){
-        $notif = Pengumuman::where('forda_id',$request->session()->get('id'))->get();
         return view('/koreksi_tryout');
     }
 
@@ -74,9 +73,9 @@ class FordaController extends Controller
     }
 
     function ProsesKoreksiTryout(Request $request){
-        $JawabanTryOut = $request->all();
+        $JawabanTryOut = $request->except('_token');
+       
         JawabanTryout::create($JawabanTryOut);
-        
         return redirect('/koreksi_tryout');
     }
 
@@ -90,5 +89,19 @@ class FordaController extends Controller
         $peserta = Peserta::where('id',$request->input('idPeserta'))->first();
         $peserta->update(['status'=>'2','bukti_bayar'=>null,'kartu_pelajar'=>null]);
         return redirect('/konfirmasi_berkas');
+    }
+
+    function GetJawabanPeserta(Request $request){
+        $jawaban =JawabanTryout::where('peserta',$request->peserta);
+        if($jawaban->count()>0){
+            $data = collect($jawaban->first())->except('id','created_at','updated_at','peserta');
+            return response()->json($data, 200);
+        }
+        else{
+            
+            return response()->json([
+                'message'=>'jawaban tidak ada'
+            ],404);
+        }
     }
 }
