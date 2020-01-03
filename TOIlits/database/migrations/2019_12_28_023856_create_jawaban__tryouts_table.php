@@ -15,7 +15,9 @@ class CreateJawabanTryoutsTable extends Migration
     {
         Schema::create('jawaban__tryouts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama');
+            $table->string('peserta');
+            $table->unsignedInteger('forda_id');
+            $table->foreign('forda_id')->references('id')->on('forda')->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('pilihan_tryout')->comment('1=saintek,2=soshum');
             $table->tinyInteger('paket');
             for ($x = 1; $x <= 200; $x++) {
