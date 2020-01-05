@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Forda;
-use App\User;
-use App\Peserta;
 use App\KodeRequest;
+use App\Peserta;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use File;
 use Mail;
 use \Exception;
+
 class AuthController extends Controller
 {
-    function HalamanRegister(Request $request)
+    public function HalamanRegister(Request $request)
     {
         if (!$request->session()->get('login')) {
             $forda = Forda::get();
             return view('register', [
-                'forda' => $forda
+                'forda' => $forda,
             ]);
         }
         return redirect('/');
     }
 
-    function HalamanLupaPassword(Request $request)
+    public function HalamanLupaPassword(Request $request)
     {
         if (!$request->session()->get('login')) {
             return view('lupapassword');
@@ -32,47 +32,47 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    function HalamanResetPassword(Request $request)
+    public function HalamanResetPassword(Request $request)
     {
 
         if (!$request->session()->get('login')) {
             if (AuthController::CekKode($request->c)) {
                 return view('resetpassword', [
-                    'kode' => $request->c
+                    'kode' => $request->c,
                 ]);
             }
         }
         return redirect('/');
     }
 
-    function HalamanGantiPassword(){
+    public function HalamanGantiPassword()
+    {
         return view('gantipassword');
     }
 
-    function ProsesGantiPassword(Request $request){
-        if($request->session()->get('role')=='peserta'){
-            $peserta = Peserta::where('id',$request->session()->get('id'))->first();
-            $user = User::where('id',$peserta->user_id)->first();
+    public function ProsesGantiPassword(Request $request)
+    {
+        if ($request->session()->get('role') == 'peserta') {
+            $peserta = Peserta::where('id', $request->session()->get('id'))->first();
+            $user = User::where('id', $peserta->user_id)->first();
+        } elseif ($request->session()->get('role') == 'forda') {
+            $forda = Forda::where('id', $request->session()->get('id'))->first();
+            $user = User::where('id', $forda->user_id)->first();
+        } else {
+            $user = User::where('id', $request->session()->get('id'))->first();
         }
-        elseif($request->session()->get('role')=='forda'){
-            $forda = Forda::where('id',$request->session()->get('id'))->first();
-            $user = User::where('id',$forda->user_id)->first();
-        }
-        else{
-            $user = User::where('id',$request->session()->get('id'))->first();
-        }
-        
-        if(Hash::check($request->input('passwordlama'), $user->password)){
+
+        if (Hash::check($request->input('passwordlama'), $user->password)) {
             $user->update([
-                'password'=>Hash::make($request->input('passwordbaru'))
+                'password' => Hash::make($request->input('passwordbaru')),
             ]);
-            return redirect('/ganti_password')->with(['pesan'=>'Berhasil mengubah password','tipe'=>'success']);
-        }else{
-            return redirect('/ganti_password')->with(['pesan'=>'Password lama tidak cocok','tipe'=>'danger']);
+            return redirect('/ganti_password')->with(['pesan' => 'Berhasil mengubah password', 'tipe' => 'success']);
+        } else {
+            return redirect('/ganti_password')->with(['pesan' => 'Password lama tidak cocok', 'tipe' => 'danger']);
         }
     }
 
-    function ProsesRequestLupaPassword(Request $request)
+    public function ProsesRequestLupaPassword(Request $request)
     {
         $user = User::where('username', $request->input('email'));
         if ($user->count() < 1) {
@@ -88,7 +88,7 @@ class AuthController extends Controller
                 }
                 KodeRequest::create([
                     'kode' => $kode,
-                    'user_id' => $user->first()->id
+                    'user_id' => $user->first()->id,
                 ]);
                 Mail::send('emailhtml', ['kode' => $kode], function ($message) use ($request) {
                     $message->from('ilits.to.2020@gmail.com', 'ILITS 2020');
@@ -102,55 +102,54 @@ class AuthController extends Controller
         }
     }
 
-    function ProsesResetPassword(Request $request)
+    public function ProsesResetPassword(Request $request)
     {
         if (!$request->session()->get('login')) {
             if (AuthController::CekKode($request->input('kode'))) {
-                $kode = KodeRequest::where('kode',$request->input('kode'))->first();
+                $kode = KodeRequest::where('kode', $request->input('kode'))->first();
 
-                $user = User::where('id',$kode->user_id)->first();
-                $user->update(['password'=>Hash::make($request->input('password'))]);
+                $user = User::where('id', $kode->user_id)->first();
+                $user->update(['password' => Hash::make($request->input('password'))]);
                 $kode->delete();
 
-                return redirect('/')->with(['pesan'=>'Reset Password Berhasil','tipe'=>'success']);
+                return redirect('/')->with(['pesan' => 'Reset Password Berhasil', 'tipe' => 'success']);
             }
         }
         return redirect('/');
     }
 
-    function ProsesRegister(Request $request)
+    public function ProsesRegister(Request $request)
     {
-        try{
-        User::create([
-            'role' => 'peserta',
-            'username' => $request->input('email'),
-            'password' => Hash::make($request->input('password'))
-        ]);
+        try {
+            User::create([
+                'role' => 'peserta',
+                'username' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+            ]);
 
-        $user = User::orderBy('id', 'desc')->first();
-        Peserta::create([
-            'nama' => $request->input('nama'),
-            'user_id' => $user->id,
-            'asal_sekolah' => $request->input('asal_sekolah'),
-            'forda_id' => $request->input('forda'),
-            'no_wa' => $request->input('no_wa'),
-            'bukti_bayar' => null,
-            'kartu_pelajar' => null,
-            'pilihan_tryout'=> $request->input('pilihan_tryout'),
-            'status' => '0'
-            
-        ]);
+            $user = User::orderBy('id', 'desc')->first();
+            Peserta::create([
+                'nama' => $request->input('nama'),
+                'user_id' => $user->id,
+                'asal_sekolah' => $request->input('asal_sekolah'),
+                'forda_id' => $request->input('forda'),
+                'no_wa' => $request->input('no_wa'),
+                'bukti_bayar' => null,
+                'kartu_pelajar' => null,
+                'pilihan_tryout' => $request->input('pilihan_tryout'),
+                'status' => '0',
 
-        return redirect('/')->with(['pesan'=>'Pendaftaran Berhasil','tipe'=>'success']);}
-        catch (\Illuminate\Database\QueryException $e){
+            ]);
+
+            return redirect('/')->with(['pesan' => 'Pendaftaran Berhasil', 'tipe' => 'success']);} catch (\Illuminate\Database\QueryException $e) {
             $errorCode = $e->errorInfo[1];
-            if($errorCode == 1062){
-                return redirect('/')->with(['pesan'=>'Email sudah digunakan','tipe'=>'danger']);
+            if ($errorCode == 1062) {
+                return redirect('/')->with(['pesan' => 'Email sudah digunakan', 'tipe' => 'danger']);
             }
         }
     }
 
-    function ProsesLogin(Request $request)
+    public function ProsesLogin(Request $request)
     {
         $user = User::where('username', '=', $request->input('email'))->first();
         if ($user) {
@@ -161,40 +160,40 @@ class AuthController extends Controller
                         'id' => $peserta->id,
                         'nama' => $peserta->nama,
                         'login' => true,
-                        'role' => 'peserta'
+                        'role' => 'peserta',
                     ]);
-                    File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'3'] ?>");
+
                     return redirect('/notifikasi');
                 } elseif ($user->role == 'forda') {
-                    $forda = Forda::where('user_id',  $user->id)->first();
+                    $forda = Forda::where('user_id', $user->id)->first();
                     $request->session()->put([
                         'id' => $forda->id,
                         'nama' => $forda->nama,
                         'login' => true,
-                        'role' => 'forda'
+                        'role' => 'forda',
                     ]);
-                    File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'1'] ?>");
+
                     return redirect('/daftar_peserta');
                 } elseif ($user->role == 'admin') {
                     $request->session()->put([
                         'id' => $user->id,
                         'nama' => 'admin',
                         'login' => true,
-                        'role' => 'admin'
+                        'role' => 'admin',
                     ]);
-                    File::put(base_path() . '\config\sidebar.php', "<?php\n return['sidebar_type'=>'2'] ?>");
+
                     return redirect('/dashboard');
                 }
-                
+
             }
         }
         return redirect('/')->with([
             'pesan' => 'Username atau password salah',
-            'tipe' => 'danger'
+            'tipe' => 'danger',
         ]);
     }
 
-    function CekKode($kode)
+    public function CekKode($kode)
     {
         $k = KodeRequest::where('kode', $kode)->count();
         if ($k > 0) {
@@ -204,9 +203,9 @@ class AuthController extends Controller
         }
     }
 
-    function GetLocation($id)
+    public function GetLocation($id)
     {
-        $forda = Forda::select('daerah')->where('id',$id)->first();
+        $forda = Forda::select('daerah')->where('id', $id)->first();
         echo $forda;
     }
 }
