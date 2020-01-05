@@ -76,7 +76,10 @@ class FordaController extends Controller
         $JawabanTryOut = $request->except('_token');
        
         JawabanTryout::create($JawabanTryOut);
-        return redirect('/koreksi_tryout');
+        return redirect('/koreksi_tryout')->with([
+            'message'=>'Jawaban berhasil disimpan',
+            'tipe'=>'success'
+        ]);
     }
 
     function ProsesTerimaBerkas(Request $request){

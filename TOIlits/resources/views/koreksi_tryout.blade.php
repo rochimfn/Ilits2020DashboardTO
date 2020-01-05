@@ -8,6 +8,11 @@
 @stop
 
 @section('content')
+    @if($message=Session::get('message'))
+        <div class="alert alert-{{ Session::get('tipe') }}" role="alert">
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <form method="POST" action="/proses_koreksi_tryout" style="max-width:40%">
         {{ csrf_field() }}
         <input type="hidden" name="forda_id" value="{{ Session::get('id')}}">

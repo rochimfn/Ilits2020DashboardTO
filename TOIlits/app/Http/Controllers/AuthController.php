@@ -136,7 +136,7 @@ class AuthController extends Controller
             'no_wa' => $request->input('no_wa'),
             'bukti_bayar' => null,
             'kartu_pelajar' => null,
-            'tryout_online'=> $request->input('tryout_online'),
+            'pilihan_tryout'=> $request->input('pilihan_tryout'),
             'status' => '0'
             
         ]);
