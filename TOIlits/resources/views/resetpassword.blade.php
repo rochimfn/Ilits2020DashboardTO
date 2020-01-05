@@ -40,7 +40,7 @@
                                 <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                <input class="form-control" name="password" placeholder="Password Baru" type="password" required pattern=".{6,12}"  title="8-12 karakter">
+                                <input class="form-control" name="password" placeholder="Password Baru" type="password" required pattern=".{8,12}"  title="8-12 karakter">
                             </div>
                         </div>
                         
