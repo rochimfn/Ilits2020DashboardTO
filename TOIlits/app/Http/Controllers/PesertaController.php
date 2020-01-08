@@ -80,12 +80,12 @@ class PesertaController extends Controller
         $pelajarName = Carbon::now()->timestamp . '_' . uniqid() . '.' . $pelajar->getClientOriginalExtension();
         $gambarPelajar = Image::make($pelajar);
         if($gambarPelajar->width()>=$gambarPelajar->height()){
-        $gambarPelajar->resize(250,null, function ($constraint) {
+        $gambarPelajar->resize($gambarPelajar->width()*75/100,null, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
         })->save(public_path().'/images/kartupelajar/'.$forda->nama . '/' . $pelajarName);}
         else{
-            $gambarPelajar->resize(null,250, function ($constraint) {
+            $gambarPelajar->resize(null,$gambarPelajar->height()*75/100, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->save(public_path().'/images/kartupelajar/'.$forda->nama . '/' . $pelajarName);
@@ -96,12 +96,12 @@ class PesertaController extends Controller
         $buktiName = Carbon::now()->timestamp . '_' . uniqid() . '.' . $bukti->getClientOriginalExtension();
         $gambarBukti = Image::make($bukti);
         if($gambarBukti->width()>=$gambarBukti->height()){
-        $gambarBukti->resize(250,null, function ($constraint) {
+        $gambarBukti->resize($gambarBukti->width()*75/100,null, function ($constraint) {
             $constraint->aspectRatio();
             $constraint->upsize();
         })->save(public_path().'/images/bukti/'.$forda->nama . '/' . $buktiName);}
         else{
-            $gambarBukti->resize(null,250, function ($constraint) {
+            $gambarBukti->resize(null,$gambarBukti->height()*75/100, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->save(public_path().'/images/bukti/'.$forda->nama . '/' . $buktiName);
