@@ -44,14 +44,18 @@
             
         @endif
 @else
+<div class="alert alert-danger" role="alert" id="alertSize" style="display:none">
+    Ukuran file tidak boleh melebihi 200 KB
+</div>
+
 @if($peserta->status=='2')
 <div class="alert alert-danger">
     Berkas anda ditolak oleh forda anda. Silahkan upload ulang berkas yang dibutuhkan
-    </div>
+</div>
 @endif
     <p>Silahkan masukkan berkas anda di form berikut (masing-masing gambar tidak boleh melebihi 200KB)</p>
 
-    <form action="/proses_upload_berkas" method="POST" enctype="multipart/form-data"> 
+    <form action="/proses_upload_berkas" method="POST" enctype="multipart/form-data" id="formBukti"> 
         {{csrf_field()}}
         <div class="row">
                 <div class="form-group col-md-4 col-sm-6">
@@ -73,7 +77,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="button" onclick="submitForm()" class="btn btn-success">Simpan</button>
                 </div>
             </div>
     </form>
@@ -86,26 +90,57 @@
 
 @section('js')
 <script>
+        var inputPelajar = false;
+        var inputBukti = false;
         $(document).ready(function (){
             $('#input-pelajar').change(function () {
                 if (this.files && this.files[0]) {
+                    if(this.files[0].size>204800){
+                        $('#alertSize').show();
+                        setTimeout(function(){
+                            $('#alertSize').hide();
+                        },2000);
+                        inputPelajar = false;
+                        return;
+                    }
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         $('#img-kartupelajar').attr('src', e.target.result);
                     }
                     reader.readAsDataURL(this.files[0]);
+                    inputPelajar=true;
                 }
             });
             $('#input-bukti').change(function () {
                 if (this.files && this.files[0]) {
+                    if(this.files[0].size>204800){
+                        $('#alertSize').show();
+                        setTimeout(function(){
+                            $('#alertSize').hide();
+                        },2000);
+                        inputBukti = false;
+                        return;
+                    }
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         $('#img-bukti').attr('src', e.target.result);
                     }
                     reader.readAsDataURL(this.files[0]);
+                    inputBukti = true;
                 }
             });
         });
+
+        function submitForm(){
+            if(inputBukti&&inputPelajar){
+                $('#formBukti').submit();
+            }else{
+                $('#alertSize').show();
+                        setTimeout(function(){
+                            $('#alertSize').hide();
+                        },2000);
+            }
+        }
     </script>
 @stop
 

@@ -78,12 +78,34 @@ class PesertaController extends Controller
         }
         $pelajar = $request->file('input-pelajar');
         $pelajarName = Carbon::now()->timestamp . '_' . uniqid() . '.' . $pelajar->getClientOriginalExtension();
-        Image::make($pelajar)->save(public_path().'/images/kartupelajar/'.$forda->nama . '/' . $pelajarName);
+        $gambarPelajar = Image::make($pelajar);
+        if($gambarPelajar->width()>=$gambarPelajar->height()){
+        $gambarPelajar->resize(250,null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save(public_path().'/images/kartupelajar/'.$forda->nama . '/' . $pelajarName);}
+        else{
+            $gambarPelajar->resize(null,250, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save(public_path().'/images/kartupelajar/'.$forda->nama . '/' . $pelajarName);
+        }
+
 
         $bukti = $request->file('input-bukti');
         $buktiName = Carbon::now()->timestamp . '_' . uniqid() . '.' . $bukti->getClientOriginalExtension();
-        Image::make($bukti)->save(public_path().'/images/bukti/'.$forda->nama . '/' . $buktiName);
-
+        $gambarBukti = Image::make($bukti);
+        if($gambarBukti->width()>=$gambarBukti->height()){
+        $gambarBukti->resize(250,null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->save(public_path().'/images/bukti/'.$forda->nama . '/' . $buktiName);}
+        else{
+            $gambarBukti->resize(null,250, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save(public_path().'/images/bukti/'.$forda->nama . '/' . $buktiName);
+        }
         Peserta::where('id','=',$request->session()->get('id'))->update(['bukti_bayar'=>$buktiName,'kartu_pelajar'=>$pelajarName]);
         return redirect('bukti_pembayaran')->with([
             'pesan'=>'Upload sukses,silahkan menunggu konfirmasi dari forda masing-masing',
