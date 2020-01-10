@@ -36,16 +36,31 @@ class FordaController extends Controller
             'peserta'=>$peserta
         ]);
     }
-    function CetakAbsen(Request $request){
+
+    function HalamanCetakAbsen(Request $request){
+        $forda = Forda::find($request->session()->get('id'));
+        if($forda->tryout_online==1){
+        $checkNull= Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->whereNull('token')->count();
+            if($checkNull>0){
+                return redirect('/daftar_peserta')->with([
+                    'pesan'=>'Ada peserta yang belum mendapatkan token,silahkan request token kepada admin',
+                    'tipe'=>'danger'
+                ]);
+            }
+        }
+        return view('/cetakabsen');
+    }
+    function ProsesCetakAbsen(Request $request){
+        ini_set('max_execution_time', 300);
+        ini_set('memory_limit','512M');
+        $forda = Forda::find($request->session()->get('id'));
+        
         $peserta = Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->get();
         $data = [
             'peserta'=>$peserta,
-            'forda'=>$request->session()->get('nama')
+            'forda'=>$forda
         ];
-        // return view('/cetakabsen',[
-        //     'peserta'=>$peserta
-        // ]);
-        $pdf = PDF::loadView('cetakabsen', $data)->setPaper('a4', 'portrait');;
+        $pdf = PDF::loadView('absen', $data)->setPaper('a4', 'portrait');;
         return $pdf->download('absen.pdf');
     }
 

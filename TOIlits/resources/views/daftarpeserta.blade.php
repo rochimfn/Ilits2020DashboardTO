@@ -8,7 +8,11 @@
 @stop
 
 @section('content')
-
+    @if($message=Session::get('pesan'))
+        <div class="alert alert-{{ Session::get('tipe') }}" role="alert">
+            {{ $message }}
+        </div>
+    @endif
     <table class="table table-bordered" id="event-table">
         <thead>
             <tr>
@@ -31,7 +35,6 @@
 @stop
 
 @section('js')>
-<script src="datepicker/js/bootstrap-datepicker.js"></script>
 <script>
     let materi="";
     var data=[];

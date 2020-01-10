@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kalender;
+use App\Peserta;
+use App\Forda;
 class AdminController extends Controller
 {
     function HalamanAturKalender(){
         $event = Kalender::orderBy('tgl','asc')->get();
         return view('admin.superuser.atur_kalender',[
             'event'=>$event
+        ]);
+    }
+
+    function HalamanGenerateToken(){
+        
+        $fordaNeedToken = Peserta::whereNull('token')->where('status','1')->select('forda_id')->get()->toArray();
+        $forda = Forda::selectRaw('forda.id,forda.nama as nama,count(peserta.id) as total')->join('peserta','peserta.forda_id','=','forda.id')->whereIn('forda.id',$fordaNeedToken)->where('peserta.status','1')->where('tryout_online',1)->groupBy('forda.id','forda.nama')->get();
+        
+        return view('admin/superuser/generate_token',[
+            'forda'=>$forda
         ]);
     }
 
@@ -38,5 +50,54 @@ class AdminController extends Controller
         $event = Kalender::find($request->input('id'));
         $event->delete();
         return redirect('/atur_kalender');
+    }
+
+    function ProsesGenerateToken(Request $request){
+        
+        if($request->has('id')){
+            $forda="";
+            if($request->query('id')<10){
+                $forda="0".$request->query('id');
+            }else{
+                $forda = $request->query('id');
+            }
+            $peserta = Peserta::where('forda_id',$request->query('id'))->whereNull('token')->where('status',1)->get();
+            foreach($peserta as $p){
+                $pesertaId = "";
+                $abjad = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                $kode = '';
+                $token='';
+                if($p->id<10){
+                    $pesertaId="0000".$p->id;
+                }
+                elseif($p->id>=10&&$p->id<100){
+                    $pesertaId="000".$p->id;
+                }
+                elseif($p->id>=100&&$p->id<1000){
+                    $pesertaId="00".$p->id;
+                }
+                elseif($p->id>=1000&&$p->id<10000){
+                    $pesertaId="0".$p->id;
+                }
+                else{
+                    $pesertaId=$p->id;
+                }
+                
+                for ($i = 0; $i < 3; $i++) {
+                    $index = rand(0, strlen($abjad));
+                    $huruf = substr($abjad, $index, 1);
+                    $kode .= $huruf;
+                }
+
+                $token="ILITS-".$forda."-".$pesertaId."-".$p->pilihan_tryout."-".$kode;
+                $p->update(['token'=>$token]);
+            }
+            return redirect('/generate_token')->with(
+                ['pesan'=>'Token berhasil dibuat',
+                'tipe'=>'success']
+            );
+        }else{
+            return redirect('/');
+        }
     }
 }

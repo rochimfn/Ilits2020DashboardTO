@@ -144,7 +144,7 @@ class AuthController extends Controller
             return redirect('/')->with(['pesan' => 'Pendaftaran Berhasil', 'tipe' => 'success']);} catch (\Illuminate\Database\QueryException $e) {
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1062) {
-                return redirect('/')->with(['pesan' => 'Email sudah digunakan', 'tipe' => 'danger']);
+                return redirect('/register')->with(['pesan' => 'Email sudah digunakan', 'tipe' => 'danger']);
             }
         }
     }

@@ -88,6 +88,7 @@ class AppServiceProvider extends ServiceProvider
                 $event->menu->add('GENERATOR');
                 $event->menu->add([
                     'text' => 'Generate Token',
+                    'url'=>'/generate_token',
                     'icon' => 'fas fa-fw fa-barcode',
                 ]);
                 $event->menu->add([

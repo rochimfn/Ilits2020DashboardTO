@@ -59,9 +59,10 @@ Route::get('/ganti_password','AuthController@HalamanGantiPassword')->middleware(
 Route::get('/sendEmail',function(){
     return view('tesemail');
 });
+Route::get('/generate_token','AdminController@HalamanGenerateToken')->middleware('CekLogin','CekStatusAdmin');
 Route::get('/notifikasi','PesertaController@HalamanNotif')->middleware('CekLogin','CekStatusPeserta');
 Route::get('/kelola_notifikasi','FordaController@HalamanNotif')->middleware('CekLogin', 'CekStatusForda');
-Route::get('/cetak_absen','FordaController@CetakAbsen')->middleware('CekLogin', 'CekStatusForda');
+Route::get('/cetak_absen','FordaController@HalamanCetakAbsen')->middleware('CekLogin', 'CekStatusForda');
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/daftar_peserta','FordaController@HalamanDaftarPeserta')->middleware('CekLogin', 'CekStatusForda');
 Route::get('/jumlah_peserta','PesertaController@HalamanJumlah');
@@ -70,6 +71,17 @@ Route::get('/under_construction',function(){
 return view('/under_construction');
 });
 Route::get('/koreksi_tryout','FordaController@HalamanKoreksiTryout')->middleware('CekLogin', 'CekStatusForda');
+Route::get('/proses_generate_token','AdminController@ProsesGenerateToken')->middleware('CekLogin','CekStatusAdmin');
+Route::get('/dashboard',function(){
+    if(Session::get('role')=='forda'){
+        return redirect('/daftar_peserta');
+    }elseif(Session::get('role')=='admin'){
+        return redirect('/atur_kalender');
+    }elseif(Session::get('role')=='peserta'){
+        return redirect('/notifikasi');
+    }
+})->middleware('CekLogin');
+Route::get('/proses_cetak_absen','FordaController@ProsesCetakAbsen')->middleware('CekLogin','CekStatusForda');
 //POST
 Route::post('/proses_register', 'AuthController@ProsesRegister');
 Route::post('/proses_login', 'AuthController@ProsesLogin');

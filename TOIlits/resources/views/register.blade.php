@@ -22,6 +22,11 @@
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
+                    @if($message=Session::get('pesan'))
+                    <div class="alert alert-{{ Session::get('tipe') }}" role="alert">
+                        {{ $message }}
+                    </div>
+                    @endif
                     <form action="/proses_register" method="POST" id="form">
                             {{csrf_field()}}
                         <div class="form-group mb-3">
