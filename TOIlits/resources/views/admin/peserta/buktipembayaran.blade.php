@@ -14,7 +14,7 @@
     {{ $message }}
 </div>
 @endif
-@if($sudahupload)
+@if($sudahupload&&$peserta->status!='2')
 @if($peserta->status=='0')
 <div class="alert alert-warning">
         Berkas anda masih direview oleh forda,mohon menunggu
