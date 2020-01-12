@@ -96,8 +96,59 @@
                                 Soshum
                           </label>
                         </div>
-                       
-                        
+                        <br>
+                        <div class="form-group">
+                          <label>Departemen</label>
+                          <select class="form-control" name="departemen">
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS SAINS DAN ANALITIKA DATA</option>
+                            <option value="1">Fisika</option>
+                            <option value="2">Matematika</option>
+                            <option value="3">Statistika</option>
+                            <option value="4">Kimia</option>
+                            <option value="5">Biologi</option>
+                            <option value="6">Akutaria</option>
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS TEKNOLOGI INDUSTRI DAN REKAYASA SISTEM</option>
+                            <option value="7">Teknik Mesin</option>
+                            <option value="8">Teknik Kimia</option>
+                            <option value="9">Teknik Fisika</option>
+                            <option value="10">Teknik Industri</option>
+                            <option value="11">Teknik Material dan Metalurgi</option>
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS TEKNIK SIPIL, PERENCANAAN, DAN KEBUMIAN</option>
+                            <option value="12">Teknik Sipil</option>
+                            <option value="13">Arsitektur</option>
+                            <option value="14">Teknik Lingkungan</option>
+                            <option value="15">Perencanaan Wilayah Kota</option>
+                            <option value="16">Teknik Geomatika</option>
+                            <option value="17">Teknik Geofisika</option>
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS TEKNOLOGI KELAUTAN</option>
+                            <option value="18">Teknik Perkapalan</option>
+                            <option value="19">Teknik Sistem Perkapalan</option>
+                            <option value="20">Teknik Kelautan</option>
+                            <option value="21">Teknik Transportasi Laut</option>
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS TEKNOLOGI ELEKTRO DAN INFORMATIKA CERDAS</option>
+                            <option value="22">Teknik Elektro</option>
+                            <option value="23">Teknik Biomedik</option>
+                            <option value="24">Teknik Komputer</option>
+                            <option value="25">Teknik Informatika</option>
+                            <option value="26">Sistem informasi</option>
+                            <option value="27">Teknologi Informasi</option>
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS DESAIN KREATIF DAN BISNIS DIGITAL</option>
+                            <option value="28">Desain Produk</option>
+                            <option value="29">Desain Interior</option>
+                            <option value="30">Desain Komunikasi Visual</option>
+                            <option value="31">Manajemen Bisnis</option>
+                            <option value="32">Studi Pembangunan</option>
+                            <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS VOKASI</option>
+                            <option value="33">Teknik Infrastruktur Sipil</option>
+                            <option value="34">Teknik Mesin Industri</option>
+                            <option value="35">Teknik Elekro Otomasi</option>
+                            <option value="36">Teknik Kimia Industri</option>
+                            <option value="37">Teknik Instrumentasi</option>
+                            <option value="38">Statistika Bisnis</option>
+                          </select>
+                        </div>
+                        <small>Untuk informasi tentang departemen, silahkan cek di website <a href="http://inilho.its.ac.id" target="_blank">Ini Lho ITS!</a></small>
+                        <br>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Sign up</button>
                         </div>
