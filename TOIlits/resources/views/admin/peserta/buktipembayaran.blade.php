@@ -97,6 +97,9 @@
                 if (this.files && this.files[0]) {
                     if(this.files[0].size>204800){
                         $('#alertSize').show();
+                        $('html, body').animate({
+                            scrollTop: $("#alertSize").offset().top
+                          }, 500);
                         setTimeout(function(){
                             $('#alertSize').hide();
                         },2000);
@@ -115,6 +118,9 @@
                 if (this.files && this.files[0]) {
                     if(this.files[0].size>204800){
                         $('#alertSize').show();
+                        $('html, body').animate({
+                            scrollTop: $("#alertSize").offset().top
+                          }, 500);
                         setTimeout(function(){
                             $('#alertSize').hide();
                         },2000);

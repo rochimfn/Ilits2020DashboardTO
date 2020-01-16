@@ -98,7 +98,7 @@
                         </div>
                         <br>
                         <div class="form-group">
-                          <label>Departemen</label>
+                          <label>Minat Departemen</label>
                           <select class="form-control" name="departemen">
                             <option style="font-size:16px;font-weight:bold" disabled>FAKULTAS SAINS DAN ANALITIKA DATA</option>
                             <option value="1">Fisika</option>
