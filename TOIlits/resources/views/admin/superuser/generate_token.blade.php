@@ -10,6 +10,7 @@
 @section('content')
 
 <br>
+<a href="/exportExcel"><button type="button" class="btn btn-success">Export Excel</button></a>
 @if($message=Session::get('pesan'))
         <div class="alert alert-{{ Session::get('tipe') }}" role="alert">
             {{ $message }}

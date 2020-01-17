@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\PaketExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Paket;
 use App\Kalender;
 use App\Peserta;
 use App\Forda;
@@ -16,8 +19,8 @@ class AdminController extends Controller
     }
 
     function HalamanGenerateToken(){
-        
-        $fordaNeedToken = Peserta::whereNull('token')->where('status','1')->select('forda_id')->get()->toArray();
+        $pesertaWithToken = Paket::select('peserta_id')->get();
+        $fordaNeedToken = Peserta::whereNotIn('id',$pesertaWithToken)->where('status','1')->select('forda_id')->get()->toArray();
         $forda = Forda::selectRaw('forda.id,forda.nama as nama,count(peserta.id) as total')->join('peserta','peserta.forda_id','=','forda.id')->whereIn('forda.id',$fordaNeedToken)->where('peserta.status','1')->where('tryout_online',1)->groupBy('forda.id','forda.nama')->get();
         
         return view('admin/superuser/generate_token',[
@@ -53,7 +56,6 @@ class AdminController extends Controller
     }
 
     function ProsesGenerateToken(Request $request){
-        
         if($request->has('id')){
             $forda="";
             if($request->query('id')<10){
@@ -61,8 +63,11 @@ class AdminController extends Controller
             }else{
                 $forda = $request->query('id');
             }
-            $peserta = Peserta::where('forda_id',$request->query('id'))->whereNull('token')->where('status',1)->get();
+            $pesertaWithToken = Paket::select('peserta_id')->get();
+            $peserta = Peserta::whereNotIn('id',$pesertaWithToken)->where('forda_id',$request->query('id'))->where('status',1)->get();
             foreach($peserta as $p){
+                $paket = rand(1,5);
+                $paketString = ($p->pilihan_tryout==1?'ILITS SAINTEK':'ILITS SOSHUM').($paket==1?'':' '.$paket);
                 $pesertaId = "";
                 $abjad = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
                 $kode = '';
@@ -90,7 +95,11 @@ class AdminController extends Controller
                 }
 
                 $token="ILITS-".$forda."-".$pesertaId."-".$p->pilihan_tryout."-".$kode;
-                $p->update(['token'=>$token]);
+                Paket::create([
+                    'token'=>$token,
+                    'ujian'=>$paketString,
+                    'peserta_id'=>$p->id
+                ]);
             }
             return redirect('/generate_token')->with(
                 ['pesan'=>'Token berhasil dibuat',
@@ -100,4 +109,8 @@ class AdminController extends Controller
             return redirect('/');
         }
     }
+    public function ExcelExport()
+	{
+		return Excel::download(new PaketExport, 'token.xlsx');
+	}
 }

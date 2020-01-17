@@ -55,6 +55,7 @@
                 <th>Jurusan Try Out</th>
                 @if($forda->tryout_online==1)
                 <th>Token</th>
+                <th>Paket</th>
                 @endif
                 <th>TTD</th>
             </tr>
@@ -74,6 +75,7 @@
                     
                     @if($forda->tryout_online==1)
                     <td>{{ $p->token }}</td>
+                    <td>{{$p->ujian}}</td>
                     @endif
                     <td style="width:100px;">
                         

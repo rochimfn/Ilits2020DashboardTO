@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Peserta;
 use App\Pengumuman;
+use App\Paket;
 use App\Forda;
 use App\JawabanTryout;
 use PDF;
@@ -40,7 +41,8 @@ class FordaController extends Controller
     function HalamanCetakAbsen(Request $request){
         $forda = Forda::find($request->session()->get('id'));
         if($forda->tryout_online==1){
-        $checkNull= Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->whereNull('token')->count();
+        $pesertaWithToken = Paket::select('peserta_id')->get();
+        $checkNull= Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->whereNotIn('id',$pesertaWithToken)->count();
             if($checkNull>0){
                 return redirect('/daftar_peserta')->with([
                     'pesan'=>'Ada peserta yang belum mendapatkan token,silahkan request token kepada admin',
@@ -54,8 +56,12 @@ class FordaController extends Controller
         ini_set('max_execution_time', 300);
         ini_set('memory_limit','512M');
         $forda = Forda::find($request->session()->get('id'));
-        
-        $peserta = Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->get();
+        $peserta=null;
+        if($forda->tryout_online==0){
+            $peserta = Peserta::where('forda_id',$request->session()->get('id'))->where('status','1')->get();
+        }else{
+            $peserta = Paket::where('peserta.forda_id',$request->session()->get('id'))->where('status','1')->join('peserta','peserta.id','=','paket.peserta_id')->get();
+        }
         $data = [
             'peserta'=>$peserta,
             'forda'=>$forda
