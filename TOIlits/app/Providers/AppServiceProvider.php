@@ -116,6 +116,11 @@ class AppServiceProvider extends ServiceProvider
                 ]);
                 $event->menu->add('PENGATURAN AKUN');
                 $event->menu->add([
+                    'text' => 'Lihat Profile',
+                    'url' => '/profil_peserta',
+                    'icon' => 'fas fa-user',
+                ]);
+                $event->menu->add([
                     'text' => 'Ganti Password',
                     'url' => '/ganti_password',
                     'icon' => 'fas fa-lock',

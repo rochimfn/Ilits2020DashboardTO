@@ -83,6 +83,7 @@ Route::get('/dashboard',function(){
 })->middleware('CekLogin');
 Route::get('/proses_cetak_absen','FordaController@ProsesCetakAbsen')->middleware('CekLogin','CekStatusForda');
 Route::get('/exportExcel','AdminController@ExcelExport')->middleware('CekLogin','CekStatusAdmin');
+Route::get('/profil_peserta','PesertaController@HalamanProfil')->middleware('CekLogin','CekStatusPeserta');
 //POST
 Route::post('/proses_register', 'AuthController@ProsesRegister');
 Route::post('/proses_login', 'AuthController@ProsesLogin');

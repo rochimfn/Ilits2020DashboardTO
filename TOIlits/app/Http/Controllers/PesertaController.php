@@ -8,6 +8,7 @@ use App\Peserta;
 use App\Kalender;
 use App\Pengumuman;
 use App\Forda;
+use App\User;
 use Image;
 use File;
 class PesertaController extends Controller
@@ -41,6 +42,17 @@ class PesertaController extends Controller
             'peserta'=>$peserta,
             'forda'=>$forda->nama,
             'sudahupload'=>$sudahupload,
+        ]);
+    }
+
+    function HalamanProfil(Request $request) {
+        $peserta = Peserta::where('id',$request->session()->get('id'))->first();
+        $forda = Forda::where('id',$peserta->forda_id)->first();
+        $user = User::where('id',$peserta->user_id)->first();
+        return view('admin/peserta/profil', [
+            'peserta'=>$peserta,
+            'forda'=>$forda,
+            'email'=>$user->username,
         ]);
     }
 
