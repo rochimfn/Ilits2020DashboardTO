@@ -9,8 +9,26 @@ use App\Paket;
 use App\Kalender;
 use App\Peserta;
 use App\Forda;
+use App\User;
 class AdminController extends Controller
 {
+    function HalamanDaftarPeserta(){
+        $peserta  = Peserta::selectRaw('forda.nama as namaforda, peserta.nama as nama, user.username as email, paket.token as token, paket.ujian as paket')
+            ->join('user', 'user.id', '=', 'peserta.user_id')
+            ->join('forda', 'forda.id', '=', 'peserta.forda_id')
+            ->join('paket', 'peserta.id', '=', 'paket.peserta_id')
+            ->where('forda.tryout_online',1)
+            ->where('peserta.status',1)
+//            ->whereNotNull('paket.token')
+            ->groupBy('peserta.nama')
+            ->orderBy('forda.id', 'DESC')
+            ->orderBy('peserta.nama', 'ASC')
+            ->get();
+        return view('admin.superuser.daftarpeserta',[
+            'peserta'=>$peserta
+        ]);
+    }
+
     function HalamanAturKalender(){
         $event = Kalender::orderBy('tgl','asc')->get();
         return view('admin.superuser.atur_kalender',[
@@ -22,7 +40,7 @@ class AdminController extends Controller
         $pesertaWithToken = Paket::select('peserta_id')->get();
         $fordaNeedToken = Peserta::whereNotIn('id',$pesertaWithToken)->where('status','1')->select('forda_id')->get()->toArray();
         $forda = Forda::selectRaw('forda.id,forda.nama as nama,count(peserta.id) as total')->join('peserta','peserta.forda_id','=','forda.id')->whereIn('forda.id',$fordaNeedToken)->where('peserta.status','1')->where('tryout_online',1)->groupBy('forda.id','forda.nama')->get();
-        
+
         return view('admin/superuser/generate_token',[
             'forda'=>$forda
         ]);
@@ -87,7 +105,7 @@ class AdminController extends Controller
                 else{
                     $pesertaId=$p->id;
                 }
-                
+
                 for ($i = 0; $i < 3; $i++) {
                     $index = rand(0, strlen($abjad));
                     $huruf = substr($abjad, $index, 1);
