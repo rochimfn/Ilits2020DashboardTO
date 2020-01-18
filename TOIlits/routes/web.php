@@ -85,6 +85,7 @@ Route::get('/proses_cetak_absen','FordaController@ProsesCetakAbsen')->middleware
 Route::get('/exportExcel','AdminController@ExcelExport')->middleware('CekLogin','CekStatusAdmin');
 Route::get('/profil_peserta','PesertaController@HalamanProfil')->middleware('CekLogin','CekStatusPeserta');
 Route::get('/daftar_peserta_online','AdminController@HalamanDaftarPeserta')->middleware('CekLogin','CekStatusAdmin');
+Route::get('/statistik_peserta','AdminController@HalamanStatistikPeserta')->middleware('CekLogin','CekStatusAdmin');
 //POST
 Route::post('/proses_register', 'AuthController@ProsesRegister');
 Route::post('/proses_login', 'AuthController@ProsesLogin');

@@ -12,6 +12,23 @@ use App\Forda;
 use App\User;
 class AdminController extends Controller
 {
+    function HalamanStatistikPeserta(){
+        $fordaonline = Forda::where('tryout_online',1)->value('id')->toArray();
+        $totalpeserta  = Peserta::get()->count();
+        $totalpesertaterkonfirmasi  = Peserta::where('status',1)->count();
+        $totalpesertaonline = Peserta::whereIn('forda_id',$fordaonline)->count();
+        $totalpesertaonlineterkonfirmasi = Peserta::whereIn('forda_id',$fordaonline)->where('status',1)->count();
+        $totalpesertaoffline = Peserta::whereNotIn('forda_id',$fordaonline)->count();
+        $totalpesertaofflineterkonfirmasi = Peserta::whereNotIn('forda_id',$fordaonline)->where('status',1)->count();
+        return view('admin.superuser.statistikpeserta',[
+            'totalpeserta' => $totalpeserta,
+            'totalpesertaterkonfirmasi'=> $totalpesertaterkonfirmasi,
+            'totalpesertaonline' => $totalpesertaonline,
+            'totalpesertaonlineterkonfirmasi' => $totalpesertaonlineterkonfirmasi,
+            'totalpesertaoffline' => $totalpesertaoffline,
+            'totalpesertaofflineterkonfirmasi' => $totalpesertaofflineterkonfirmasi,
+        ]);
+    }
     function HalamanDaftarPeserta(){
         $peserta  = Peserta::selectRaw('forda.nama as namaforda, peserta.nama as nama, user.username as email, paket.token as token, paket.ujian as paket')
             ->join('user', 'user.id', '=', 'peserta.user_id')

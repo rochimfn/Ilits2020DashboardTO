@@ -69,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
                 $event->menu->add('NAVIGASI UTAMA');
                 $event->menu->add([
                     'text' => 'Statistik',
-                    'url' => 'admin/blog',
+                    'url' => '/statistik_peserta',
                     'icon' => 'fas fa-fw fa-chart-bar',
                 ]);
                 $event->menu->add([
