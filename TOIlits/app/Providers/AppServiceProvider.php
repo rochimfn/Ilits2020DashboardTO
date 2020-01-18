@@ -68,14 +68,14 @@ class AppServiceProvider extends ServiceProvider
             else if (\Session::get('role') == 'admin') {
                 $event->menu->add('NAVIGASI UTAMA');
                 $event->menu->add([
-                    'text' => 'Daftar Peserta TO Online',
-                    'url' => '/daftar_peserta_online',
-                    'icon' => 'fas fa-fw fa-print',
-                ]);
-                $event->menu->add([
                     'text' => 'Statistik',
                     'url' => 'admin/blog',
                     'icon' => 'fas fa-fw fa-chart-bar',
+                ]);
+                $event->menu->add([
+                    'text' => 'Daftar Peserta TO Online',
+                    'url' => '/daftar_peserta_online',
+                    'icon' => 'fas fa-fw fa-print',
                 ]);
                 $event->menu->add([
                     'text' => 'Atur Kalender',
