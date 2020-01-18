@@ -13,14 +13,14 @@ use App\User;
 class AdminController extends Controller
 {
     function HalamanStatistikPeserta(){
-        $fordaonline = Forda::where('tryout_online',1)->value('id')->toArray();
+        $fordaonline = [7,9,10,11,12,13,18,20,21,25,35];
         $totalpeserta  = Peserta::get()->count();
         $totalpesertaterkonfirmasi  = Peserta::where('status',1)->count();
         $totalpesertaonline = Peserta::whereIn('forda_id',$fordaonline)->count();
         $totalpesertaonlineterkonfirmasi = Peserta::whereIn('forda_id',$fordaonline)->where('status',1)->count();
         $totalpesertaoffline = Peserta::whereNotIn('forda_id',$fordaonline)->count();
         $totalpesertaofflineterkonfirmasi = Peserta::whereNotIn('forda_id',$fordaonline)->where('status',1)->count();
-        return view('admin.superuser.statistikpeserta',[
+        return view('admin.superuser.statistik',[
             'totalpeserta' => $totalpeserta,
             'totalpesertaterkonfirmasi'=> $totalpesertaterkonfirmasi,
             'totalpesertaonline' => $totalpesertaonline,
@@ -37,7 +37,7 @@ class AdminController extends Controller
             ->where('forda.tryout_online',1)
             ->where('peserta.status',1)
 //            ->whereNotNull('paket.token')
-            ->groupBy('peserta.nama')
+//            ->groupBy('peserta.nama')
             ->orderBy('forda.id', 'DESC')
             ->orderBy('peserta.nama', 'ASC')
             ->get();

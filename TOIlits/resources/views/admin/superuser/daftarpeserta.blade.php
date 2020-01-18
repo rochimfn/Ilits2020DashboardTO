@@ -4,8 +4,7 @@
 <link rel="icon" href="{!! asset('images/logokecil.png') !!}"/>
 
 @section('content_header')
-<h1 style="float:left">Daftar Peserta Tryout Online</h1>&nbsp;<a href="/cetak_absen"><button type="button" class="btn
-btn-primary" style="float:left;margin-left:8px">Cetak Absen</button></a>
+<h1 style="float:left">Daftar Peserta Tryout Online</h1><br>
 @stop
 
 @section('content')
