@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exports\PaketExport;
+use App\Exports\PesertaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Paket;
 use App\Kalender;
@@ -13,22 +14,36 @@ use App\User;
 class AdminController extends Controller
 {
     function HalamanStatistikPeserta(){
-        $fordaonline = [7,9,10,11,12,13,18,20,21,25,35];
-        $totalpeserta  = Peserta::get()->count();
-        $totalpesertaterkonfirmasi  = Peserta::where('status',1)->count();
-        $totalpesertaonline = Peserta::whereIn('forda_id',$fordaonline)->count();
-        $totalpesertaonlineterkonfirmasi = Peserta::whereIn('forda_id',$fordaonline)->where('status',1)->count();
-        $totalpesertaoffline = Peserta::whereNotIn('forda_id',$fordaonline)->count();
-        $totalpesertaofflineterkonfirmasi = Peserta::whereNotIn('forda_id',$fordaonline)->where('status',1)->count();
+
+        $peserta = Peserta::select('forda_id')->get()->toArray();
+        
+        $pesertaperforda = Forda::selectRaw('forda.nama AS nama,
+        forda.daerah AS asal,
+        count(peserta.id) AS total,
+        sum(case when status = 1 then 1 else 0 end) AS pesertaterkonfirmasi'
+        )
+        ->join('peserta','peserta.forda_id','=','forda.id')
+        ->whereIn('forda.id',$peserta)
+        ->groupBy('forda.id','forda.nama','forda.daerah')->get();
+        
+        $pesertaseindonesia = Peserta::selectRaw('count(peserta.id) AS total,
+        sum(case when status = 1 then 1 else 0 end) AS terkonfirmasi')->get();
+        
+        // $fordaonline = [7,9,10,11,12,13,18,20,21,25,35];
+        // $totalpesertaonline = Peserta::whereIn('forda_id',$fordaonline)->count();
+        // $totalpesertaonlineterkonfirmasi = Peserta::whereIn('forda_id',$fordaonline)->where('status',1)->count();
+        // $totalpesertaoffline = Peserta::whereNotIn('forda_id',$fordaonline)->count();
+        // $totalpesertaofflineterkonfirmasi = Peserta::whereNotIn('forda_id',$fordaonline)->where('status',1)->count();
+        
         return view('admin.superuser.statistik',[
-            'totalpeserta' => $totalpeserta,
-            'totalpesertaterkonfirmasi'=> $totalpesertaterkonfirmasi,
-            'totalpesertaonline' => $totalpesertaonline,
-            'totalpesertaonlineterkonfirmasi' => $totalpesertaonlineterkonfirmasi,
-            'totalpesertaoffline' => $totalpesertaoffline,
-            'totalpesertaofflineterkonfirmasi' => $totalpesertaofflineterkonfirmasi,
+            'pesertaseindonesia' => $pesertaseindonesia,
+            'peserta'=>$pesertaperforda
         ]);
     }
+    public function ExportPeserta()
+	{
+		return Excel::download(new PesertaExport, 'pesertaperforda.xlsx');
+	}
     function HalamanDaftarPeserta(){
         $peserta  = Peserta::selectRaw('forda.nama as namaforda, peserta.nama as nama, user.username as email, paket.token as token, paket.ujian as paket')
             ->join('user', 'user.id', '=', 'peserta.user_id')
@@ -36,8 +51,6 @@ class AdminController extends Controller
             ->join('paket', 'peserta.id', '=', 'paket.peserta_id')
             ->where('forda.tryout_online',1)
             ->where('peserta.status',1)
-//            ->whereNotNull('paket.token')
-//            ->groupBy('peserta.nama')
             ->orderBy('forda.id', 'DESC')
             ->orderBy('peserta.nama', 'ASC')
             ->get();
