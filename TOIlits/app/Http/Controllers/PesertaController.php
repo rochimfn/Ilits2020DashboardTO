@@ -118,7 +118,7 @@ class PesertaController extends Controller
                 $constraint->upsize();
             })->save(public_path().'/images/bukti/'.$forda->nama . '/' . $buktiName);
         }
-        Peserta::where('id','=',$request->session()->get('id'))->update(['bukti_bayar'=>$buktiName,'kartu_pelajar'=>$pelajarName]);
+        Peserta::where('id','=',$request->session()->get('id'))->update(['bukti_bayar'=>$buktiName,'kartu_pelajar'=>$pelajarName,'status'=>'0']);
         return redirect('bukti_pembayaran')->with([
             'pesan'=>'Upload sukses,silahkan menunggu konfirmasi dari forda masing-masing',
             'tipe'=>'success'
